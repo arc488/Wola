@@ -38,11 +38,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<Health>().IsDead())
-        {
-            navMeshAgent.speed = 0f;
-            return;
-        }
+        if (GetComponent<Health>().IsDead()) return;
         Patrol();
         ChaseSequence();
         ControlAnimation();
@@ -105,7 +101,6 @@ public class Enemy : MonoBehaviour
     private void ControlAnimation()
     {
         var movementSpeed = navMeshAgent.speed / maxSpeed;
-        print(movementSpeed);
         animatorController.SetFloat("speed", movementSpeed);
     }
 
