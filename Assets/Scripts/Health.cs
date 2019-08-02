@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Health : MonoBehaviour
 
     bool isDead = false;
     Animator animator;
+    NavMeshAgent navMeshAgent;
 
     public void TakeDamge(float damage)
     {
@@ -18,13 +20,14 @@ public class Health : MonoBehaviour
     {
         if (this.tag == "Enemy")
         {
-            animator = GetComponent<Animator>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            animator = GetComponentInChildren<Animator>();
         }
     }
 
     private void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && isDead == false)
         {
             isDead = true;
             Die();
@@ -33,11 +36,14 @@ public class Health : MonoBehaviour
 
     void Die()
     {
+        navMeshAgent.speed = 0;
+        navMeshAgent.stoppingDistance = 0f;
+        navMeshAgent.isStopped = true;
         if (animator != null)
         {
-            animator.SetTrigger("die");
-           
+            animator.SetTrigger("die");           
         }
+
     }
 
     public bool IsDead()
