@@ -51,11 +51,13 @@ public class Shooting : MonoBehaviour
     private void Fire()
     {
         RaycastHit hit;
+
+        audioSource.Play();
+        animator.SetTrigger("Shoot");
+        timeSinceLastShot = 0f;
+
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
-            audioSource.Play();
-            animator.SetTrigger("Shoot");
-            timeSinceLastShot = 0f;
             GameObject bulletSpark = Instantiate(sparks);
             bulletSpark.transform.position = hit.point;
             CauseDamage(hit);
