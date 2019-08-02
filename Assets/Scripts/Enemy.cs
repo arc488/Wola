@@ -141,11 +141,18 @@ public class Enemy : MonoBehaviour
     private void MoveToTarget(Transform target)
     {
         navMeshAgent.isStopped = false;
-        navMeshAgent.transform.LookAt(target);
 
-        //transform.rotation = Quaternion.LookRotation(transform.forward * rotationSpeed, transform.up * rotationSpeed);
-        //Quaternion.RotateTowards(transform.rotation, target.rotation, rotationSpeed);
+        SmoothlyRotateTowardTarget(target);
+
+
         navMeshAgent.SetDestination(target.position);
+    }
+
+    private void SmoothlyRotateTowardTarget(Transform target)
+    {
+        var direction = target.position - transform.position;
+        Quaternion lookAt = Quaternion.LookRotation(direction, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, rotationSpeed);
     }
 
     private float DistanceToPlayer()
