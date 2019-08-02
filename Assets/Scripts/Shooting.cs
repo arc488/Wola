@@ -12,12 +12,15 @@ public class Shooting : MonoBehaviour
 
     Vector3 rayOrigin;
     Animator animator;
+    AudioSource audioSource;
     float timeSinceLastShot = 0f;
     bool isReloading = false;
+
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -50,6 +53,7 @@ public class Shooting : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
+            audioSource.Play();
             animator.SetTrigger("Shoot");
             timeSinceLastShot = 0f;
             GameObject bulletSpark = Instantiate(sparks);
