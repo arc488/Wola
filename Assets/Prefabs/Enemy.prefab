@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 8379357896438083404}
   - component: {fileID: 8379357896438083401}
   - component: {fileID: 8379357896438083402}
+  - component: {fileID: 609375409}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -95,19 +96,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6839626896576262020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d6c68f78ab95746b2e0769a529290e, type: 3}
+  m_Script: {fileID: 11500000, guid: 25de32d86f6c5414eaf1f170f1c64313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 10
   attackRange: 2
   path: {fileID: 0}
   chaseSpeed: 1
-  patrolSpeed: 0.25
+  patrolSpeed: 0.243
   speedMultiplier: 5
-  rotationSpeed: -2
-  isAttacking: 0
+  rotationSpeed: 1
+  isAttacking: 1
   isChasing: 0
   isPatrolling: 0
+--- !u!114 &609375409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839626896576262020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3ba87f6fc879b40baf5ab5809424ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &485598228483602503
 PrefabInstance:
   m_ObjectHideFlags: 0

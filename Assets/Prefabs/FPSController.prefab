@@ -396,6 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1972466240513181542}
   sparks: {fileID: 771320007675027310, guid: 17da66e14006a2741bc26fb9ab88ae08, type: 3}
+  rateOfFire: 0.05
+  weaponDamage: 5
 --- !u!1001 &1972466240758600559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,10 +405,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1972466240511646052}
     m_Modifications:
-    - target: {fileID: 100002, guid: 5ba4ba99606f6244f93e0bc706ad240e, type: 3}
-      propertyPath: m_Name
-      value: MachineGun_01
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 5ba4ba99606f6244f93e0bc706ad240e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.002000004
@@ -450,6 +448,10 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 5ba4ba99606f6244f93e0bc706ad240e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 5ba4ba99606f6244f93e0bc706ad240e, type: 3}
+      propertyPath: m_Name
+      value: MachineGun_01
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 5ba4ba99606f6244f93e0bc706ad240e, type: 3}
       propertyPath: m_Controller
