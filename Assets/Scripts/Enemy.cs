@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float patrolSpeed = 0.5f;
     [SerializeField] float speedMultiplier = 1f;
     [SerializeField] float rotationSpeed = 1f;
+    [SerializeField] bool enemyPatrolling = false;
+    [SerializeField] bool chaseOnSpawn = true;
 
 
     Waypoint[] waypoints;
@@ -33,13 +35,17 @@ public class Enemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         animatorController = GetComponentInChildren<Animator>();
-        waypoints = path.GetComponentsInChildren<Waypoint>();
+        if (enemyPatrolling)
+        {
+            waypoints = path.GetComponentsInChildren<Waypoint>();
+
+        }
     }
 
     void Update()
     {
         if (GetComponent<Health>().IsDead()) return;
-        Patrol();
+        if (enemyPatrolling) Patrol();
         ChaseSequence();
         ControlAnimation();
         SetMovementSpeed();
@@ -120,14 +126,22 @@ public class Enemy : MonoBehaviour
 
     private void ChaseSequence()
     {
-        if (IsWithinRange() && DistanceToPlayer() > attackRange)
+        if (!chaseOnSpawn)
+        {
+            if (IsWithinRange() && DistanceToPlayer() > attackRange)
+            {
+                isChasing = true;
+                MoveToTarget(player.transform);
+            }
+            else
+            {
+                isChasing = false;
+            }
+        }
+        else if (DistanceToPlayer() > attackRange)
         {
             isChasing = true;
             MoveToTarget(player.transform);
-        }
-        else
-        {
-            isChasing = false;
         }
 
         if (navMeshAgent.remainingDistance < attackRange)
