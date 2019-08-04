@@ -41,6 +41,7 @@ public class Health : MonoBehaviour
         navMeshAgent.isStopped = true;
         if (animator != null)
         {
+            animator.applyRootMotion = true;
             animator.SetTrigger("die");           
         }
 
