@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float patrolSpeed = 0.5f;
     [SerializeField] float speedMultiplier = 1f;
     [SerializeField] float rotationSpeed = 1f;
+    [SerializeField] bool applyRootAnimationOnDeath = true;
 
 
     Waypoint[] waypoints;
