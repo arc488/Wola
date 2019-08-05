@@ -6,6 +6,9 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemies;
     [SerializeField] int maxEnemies = 3;
+    [SerializeField] float spawnFrequency = 1f;
+
+    public bool spawnTimer = true;
     public int numberOfEnemies = 0;
 
     private void OnDrawGizmos()
@@ -16,11 +19,22 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (spawnTimer)
+        {
+            StartCoroutine(SpawnEnemies());
+            spawnTimer = false;
+        }
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        yield return new WaitForSeconds(spawnFrequency);
         if (numberOfEnemies < maxEnemies)
         {
             GameObject enemy = enemies[Mathf.RoundToInt(Random.Range(0, enemies.Length - 1))];
             Instantiate(enemy, transform);
             numberOfEnemies++;
         }
+        spawnTimer = true;
     }
 }
