@@ -10,11 +10,8 @@ public class Health : MonoBehaviour
     bool isDead = false;
     Animator animator;
     NavMeshAgent navMeshAgent;
+    Spawner spawner;
 
-    public void TakeDamge(float damage)
-    {
-        health -= damage;
-    }
 
     private void Start()
     {
@@ -22,6 +19,7 @@ public class Health : MonoBehaviour
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();
+            spawner = GameObject.FindObjectOfType<Spawner>();
         }
     }
 
@@ -34,6 +32,11 @@ public class Health : MonoBehaviour
         }       
     }
 
+    public void TakeDamge(float damage)
+    {
+        health -= damage;
+    }
+
     void Die()
     {
         navMeshAgent.speed = 0;
@@ -44,6 +47,8 @@ public class Health : MonoBehaviour
             animator.applyRootMotion = true;
             animator.SetTrigger("die");           
         }
+        spawner.decreaseEnemyCount();
+
 
     }
 

@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] float spawnFrequency = 1f;
 
     public bool spawnTimer = true;
-    public int numberOfEnemies = 0;
+    static int numberOfEnemies = 0;
 
     private void OnDrawGizmos()
     {
@@ -36,5 +36,10 @@ public class Spawner : MonoBehaviour
             numberOfEnemies++;
         }
         spawnTimer = true;
+    }
+
+    public void decreaseEnemyCount()
+    {
+        numberOfEnemies--;
     }
 }
