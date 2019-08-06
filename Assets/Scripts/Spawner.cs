@@ -69,13 +69,13 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length - 1))];
+                enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length))];
                 return enemyToSpawn;
             }
         }
         else
         {
-            enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length - 1))];
+            enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length))];
             return enemyToSpawn;
         }
         return null;

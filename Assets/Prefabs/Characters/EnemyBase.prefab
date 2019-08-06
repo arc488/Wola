@@ -92,6 +92,8 @@ MonoBehaviour:
   patrolSpeed: 0.243
   speedMultiplier: 5
   rotationSpeed: 1
+  enemyPatrolling: 0
+  chaseOnSpawn: 1
   isAttacking: 1
   isChasing: 0
   isPatrolling: 0
@@ -118,7 +120,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.8710649
+  m_Radius: 0.2330246
+  m_Height: 1.6271057
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.8780204, z: 0}
