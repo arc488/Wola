@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7597813530352976769}
+  - component: {fileID: 3997779349358409766}
   m_Layer: 0
   m_Name: balustrade (1)
   m_TagString: Untagged
@@ -54,6 +55,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3997779349358409766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28841916579758636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 163.93204, y: 442.51404, z: 1383.1509}
+  m_Center: {x: 41.02516, y: -38.181686, z: -259.2825}
 --- !u!1 &501567559864190688
 GameObject:
   m_ObjectHideFlags: 0
