@@ -2296,8 +2296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf9f9d421860d243b8f9577ac089bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionField: {fileID: 0}
-  lightRange: 10
+  lightRange: 20
+  stayOnFor: 8
+  timeOn: 0
 --- !u!1 &2227685122366792228
 GameObject:
   m_ObjectHideFlags: 0

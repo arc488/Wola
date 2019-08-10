@@ -47,12 +47,12 @@ PrefabInstance:
     - target: {fileID: 7348610560396051057, guid: 068d4fc24ec78d1468ca1b226fff31d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 7348610560396051057, guid: 068d4fc24ec78d1468ca1b226fff31d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.82
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 7348610560396051057, guid: 068d4fc24ec78d1468ca1b226fff31d5,
         type: 3}
@@ -198,60 +198,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 650436296940620315, guid: bbe5e75a23330e74b9ef380431667db0,
+    - target: {fileID: 4626673613751916006, guid: bbe5e75a23330e74b9ef380431667db0,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Range
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 4896528778995491272, guid: bbe5e75a23330e74b9ef380431667db0,
+    - target: {fileID: 4626673613751916006, guid: bbe5e75a23330e74b9ef380431667db0,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_SpotAngle
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 3261808731441223499, guid: bbe5e75a23330e74b9ef380431667db0,
+    - target: {fileID: 4626673613751916006, guid: bbe5e75a23330e74b9ef380431667db0,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_BounceIntensity
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 6498669115470965919, guid: bbe5e75a23330e74b9ef380431667db0,
+    - target: {fileID: 856619788070338025, guid: bbe5e75a23330e74b9ef380431667db0,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Range
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5771965816099276368, guid: bbe5e75a23330e74b9ef380431667db0,
+    - target: {fileID: 856619788070338025, guid: bbe5e75a23330e74b9ef380431667db0,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6891594071925976119, guid: bbe5e75a23330e74b9ef380431667db0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3294736432509785409, guid: bbe5e75a23330e74b9ef380431667db0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 628393635298184304, guid: bbe5e75a23330e74b9ef380431667db0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 129765877076168775, guid: bbe5e75a23330e74b9ef380431667db0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2176242125555620258, guid: bbe5e75a23330e74b9ef380431667db0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3485546075716001570, guid: bbe5e75a23330e74b9ef380431667db0,
-        type: 3}
-      propertyPath: detectionField
-      value: 
+      propertyPath: m_SpotAngle
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe5e75a23330e74b9ef380431667db0, type: 3}

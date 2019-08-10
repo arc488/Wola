@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
     {
         if (GetComponent<Health>().IsDead()) return;
         if (enemyPatrolling) Patrol();
+        if (isAttacking) SmoothlyRotateTowardTarget(player.transform);
         ChaseSequence();
         ControlAnimation();
         SetMovementSpeed();
