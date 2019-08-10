@@ -11,30 +11,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: yaku_j_ignite@Zombie Run
       objectReference: {fileID: 0}
-    - target: {fileID: 400090, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.017596299
-      objectReference: {fileID: 0}
-    - target: {fileID: 400090, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.24955487
-      objectReference: {fileID: 0}
-    - target: {fileID: 400106, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.09306427
-      objectReference: {fileID: 0}
-    - target: {fileID: 400106, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.14973691
-      objectReference: {fileID: 0}
-    - target: {fileID: 400108, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.08615972
-      objectReference: {fileID: 0}
-    - target: {fileID: 400108, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.09646341
-      objectReference: {fileID: 0}
     - target: {fileID: 400130, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -83,6 +59,34 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 41259b1f34065f644a2a0253d1e3379b, type: 2}
+    - target: {fileID: 9500000, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400090, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.017596299
+      objectReference: {fileID: 0}
+    - target: {fileID: 400090, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.24955487
+      objectReference: {fileID: 0}
+    - target: {fileID: 400106, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.09306427
+      objectReference: {fileID: 0}
+    - target: {fileID: 400106, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.14973691
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08615972
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.09646341
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa7bdf6426af6b4786980ee102479b8, type: 3}
 --- !u!1001 &6412937698342002324
