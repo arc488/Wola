@@ -6,12 +6,12 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] Camera camera;
-    [SerializeField] GameObject sparks;
-    [SerializeField] GameObject muzzleFlash;
-    [SerializeField] Transform spawnTransform;
-    [SerializeField] float rateOfFire = 1f;
-    [SerializeField] float weaponDamage = 1f;
+    [SerializeField] Gun defaultGun = null;
+    [SerializeField] Gun equippedGun = null;
+    [SerializeField] Transform gunFlashPoint = null;
 
+    GameObject gunInstance;
+    GameObject player;
     Vector3 rayOrigin;
     Animator animator;
     AudioSource audioSource;
@@ -20,8 +20,19 @@ public class Shooting : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+
+        player = gameObject;
+
+    }
+
+    private void Start()
+    {
+        if (equippedGun == null)
+        {
+            EquipGun(defaultGun);
+            animator = gunInstance.GetComponent<Animator>();
+            audioSource = gunInstance.GetComponent<AudioSource>();
+        }
 
     }
 
@@ -31,7 +42,7 @@ public class Shooting : MonoBehaviour
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
         if (Input.GetButton("Fire1") && !isReloading)
         {
-            if (timeSinceLastShot > rateOfFire)
+            if (timeSinceLastShot > equippedGun.GetRateOfFire())
             {
                 Fire();
             }
@@ -43,7 +54,16 @@ public class Shooting : MonoBehaviour
             isReloading = true;
             Reload();
         }
+    }
 
+    public void EquipGun(Gun gun)
+    {
+        equippedGun = gun;
+        gunInstance = equippedGun.EquipGun(gun, transform.position);
+        gunInstance.transform.parent = gameObject.transform;
+        animator = gunInstance.GetComponent<Animator>();
+        audioSource = gunInstance.GetComponent<AudioSource>();
+        gunFlashPoint = gunInstance.transform.Find("FlashPoint");
     }
 
     private void Reload()
@@ -59,32 +79,21 @@ public class Shooting : MonoBehaviour
         animator.SetTrigger("Shoot");
         timeSinceLastShot = 0f;
 
-        playMuzzleFlash();
-
+        equippedGun.PlayMuzzleFlash(gunFlashPoint);
 
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
-            GameObject bulletSpark = Instantiate(sparks);
-            bulletSpark.transform.position = hit.point;
             CauseDamage(hit);
-            float duration = bulletSpark.GetComponentInChildren<ParticleSystem>().main.duration;
-            Destroy(bulletSpark, duration);
-
+            equippedGun.PlayImpactEffects(hit.point);
         }
-
     }
 
-    private void playMuzzleFlash()
-    {
-        GameObject flash = Instantiate(muzzleFlash, spawnTransform);        
-        float flashDuration = muzzleFlash.GetComponentInChildren<ParticleSystem>().main.duration;
-        Destroy(flash, flashDuration);
-    }
+
 
     private void CauseDamage(RaycastHit hit)
     {
         Health target = hit.transform.GetComponent<Health>();
         if (target == null) return;
-        target.TakeDamge(weaponDamage);
+        target.TakeDamge(equippedGun.GetDamage());
     }
 }

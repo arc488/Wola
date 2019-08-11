@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     Animator animator;
     NavMeshAgent navMeshAgent;
     Spawner spawner;
-    Collider collider;
+    Collider capsuleCollider;
 
 
     private void Start()
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();
             spawner = GameObject.FindObjectOfType<Spawner>();
-            collider = GetComponent<CapsuleCollider>();
+            capsuleCollider = GetComponent<CapsuleCollider>();
         }
     }
 
@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
             animator.applyRootMotion = true;
             animator.SetTrigger("die");           
         }
-        collider.enabled = false;
+        capsuleCollider.enabled = false;
         spawner.decreaseEnemyCount();
 
 
