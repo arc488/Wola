@@ -296,7 +296,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5dfd767754138e5419fe2db03b58d7be, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -491,8 +491,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1972466240513181542}
   sparks: {fileID: 771320007675027310, guid: 17da66e14006a2741bc26fb9ab88ae08, type: 3}
+  muzzleFlash: {fileID: 2901084777406696279, guid: 15cc9e69ddec0e04aa3c36e49877f7d5,
+    type: 3}
+  spawnTransform: {fileID: 1171795170122915586}
   rateOfFire: 0.05
   weaponDamage: 15
+--- !u!1 &3305633820250617498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171795170122915586}
+  m_Layer: 0
+  m_Name: FlashPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1171795170122915586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305633820250617498}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.352, y: 0.115, z: 0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1972466240758467053}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1972466240758600559
 PrefabInstance:
   m_ObjectHideFlags: 0
