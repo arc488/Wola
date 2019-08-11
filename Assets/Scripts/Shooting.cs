@@ -7,6 +7,8 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] Camera camera;
     [SerializeField] GameObject sparks;
+    [SerializeField] GameObject muzzleFlash;
+    [SerializeField] Transform spawnTransform;
     [SerializeField] float rateOfFire = 1f;
     [SerializeField] float weaponDamage = 1f;
 
@@ -16,18 +18,17 @@ public class Shooting : MonoBehaviour
     float timeSinceLastShot = 0f;
     bool isReloading = false;
 
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
-
         if (Input.GetButton("Fire1") && !isReloading)
         {
             if (timeSinceLastShot > rateOfFire)
@@ -35,6 +36,8 @@ public class Shooting : MonoBehaviour
                 Fire();
             }
         }
+
+        
         if (Input.GetButton("Reload"))
         {
             isReloading = true;
@@ -56,6 +59,9 @@ public class Shooting : MonoBehaviour
         animator.SetTrigger("Shoot");
         timeSinceLastShot = 0f;
 
+        playMuzzleFlash();
+
+
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
             GameObject bulletSpark = Instantiate(sparks);
@@ -66,6 +72,13 @@ public class Shooting : MonoBehaviour
 
         }
 
+    }
+
+    private void playMuzzleFlash()
+    {
+        GameObject flash = Instantiate(muzzleFlash, spawnTransform);        
+        float flashDuration = muzzleFlash.GetComponentInChildren<ParticleSystem>().main.duration;
+        Destroy(flash, flashDuration);
     }
 
     private void CauseDamage(RaycastHit hit)
