@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,17 @@ public class CompanionFetch : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Camera camera;
     [SerializeField] GameObject markerPrefab = null;
+    [SerializeField] CompanionMovement companion = null;
 
     bool raycastingMarker = false;
     Vector3 rayOrigin;
     GameObject markerInstance = null;
     RaycastHit hit;
 
+    private void Awake()
+    {
+        companion = FindObjectOfType<CompanionMovement>();
+    }
 
     private void Update()
     {
@@ -21,8 +27,10 @@ public class CompanionFetch : MonoBehaviour
             ToggleRaycasting();
         }
 
-        if (!raycastingMarker) return;
-        FetchRaycast();
+        if (raycastingMarker)
+        {
+            FetchRaycast();
+        }
     }
 
     private void ToggleRaycasting()
@@ -46,7 +54,7 @@ public class CompanionFetch : MonoBehaviour
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
-            if (hit.collider.tag == "Terrain")
+            if (hit.collider.tag == "Terrain" && IsReachable(hit))
             {
                 if (markerInstance == null)
                 {
@@ -62,4 +70,8 @@ public class CompanionFetch : MonoBehaviour
 
     }
 
+    private bool IsReachable(RaycastHit hit)
+    {
+        return companion.CanReachTarget(hit);
+    }
 }

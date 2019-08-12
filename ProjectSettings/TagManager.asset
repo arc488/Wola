@@ -9,6 +9,8 @@ TagManager:
   - Fire
   - FlashPoint
   - Terrain
+  - Building
+  - Floor
   layers:
   - Default
   - TransparentFX
