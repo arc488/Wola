@@ -23,6 +23,7 @@ public class Shooting : MonoBehaviour
 
         player = gameObject;
 
+
     }
 
     private void Start()
@@ -39,7 +40,6 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
         if (Input.GetButton("Fire1") && !isReloading)
         {
             if (timeSinceLastShot > equippedGun.GetRateOfFire())
@@ -74,6 +74,7 @@ public class Shooting : MonoBehaviour
     private void Fire()
     {
         RaycastHit hit;
+        rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
 
         audioSource.Play();
         animator.SetTrigger("Shoot");
