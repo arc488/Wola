@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Fire
   - FlashPoint
+  - Terrain
   layers:
   - Default
   - TransparentFX
