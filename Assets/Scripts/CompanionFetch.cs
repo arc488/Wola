@@ -25,13 +25,11 @@ public class CompanionFetch : MonoBehaviour
         }
     }
 
-    private void FetchRaycast()
+    public void FetchRaycast()
     {
-        RaycastHit[] hits;
+        RaycastHit hit;
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
-        hits = Physics.RaycastAll(rayOrigin, camera.transform.forward);
-
-        foreach (RaycastHit hit in hits)
+        if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
             if (hit.collider.tag == "Terrain")
             {
