@@ -30,6 +30,20 @@ public class CompanionMovement : MonoBehaviour
 
     }
 
+    public bool CanReachTarget(RaycastHit hit)
+    {
+        NavMeshPath path = new NavMeshPath();
+        navMeshAgent.CalculatePath(hit.point, path);
+        if (path.status == NavMeshPathStatus.PathComplete)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public float DistanceToPlayer()
     {
         return Vector3.Distance(transform.position, player.transform.position);
