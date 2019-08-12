@@ -7,17 +7,33 @@ public class CompanionFetch : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Camera camera;
     [SerializeField] GameObject markerPrefab = null;
+
+    bool raycastingMarker = false;
     Vector3 rayOrigin;
     GameObject markerInstance = null;
+    RaycastHit hit;
+
 
     private void Update()
     {
-        if (Input.GetButton("CompanionFetch"))
+        if (Input.GetButtonDown("CompanionFetch"))
         {
-            FetchRaycast();
+            ToggleRaycasting();
         }
-        else
+
+        if (!raycastingMarker) return;
+        FetchRaycast();
+    }
+
+    private void ToggleRaycasting()
+    {
+        if (!raycastingMarker)
         {
+            raycastingMarker = true;
+        }
+        else if (raycastingMarker)
+        {
+            raycastingMarker = false;
             if (markerInstance != null)
             {
                 Destroy(markerInstance);
@@ -27,7 +43,6 @@ public class CompanionFetch : MonoBehaviour
 
     public void FetchRaycast()
     {
-        RaycastHit hit;
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
