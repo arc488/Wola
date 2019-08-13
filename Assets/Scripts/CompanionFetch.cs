@@ -16,6 +16,7 @@ public class CompanionFetch : MonoBehaviour
 
     public bool raycastingMarker = false;
 
+
     private void Awake()
     {
         companion = FindObjectOfType<CompanionMovement>();
@@ -39,6 +40,7 @@ public class CompanionFetch : MonoBehaviour
             {
                 companion.Fetch(hit);
             }
+            raycastingMarker = false;
             Destroy(markerInstance);
         }
 
