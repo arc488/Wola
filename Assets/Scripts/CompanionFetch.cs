@@ -92,6 +92,11 @@ public class CompanionFetch : MonoBehaviour
         }
     }
 
+    public float RemainingFetch()
+    {
+        return fetchNumber;
+    }
+
     private bool IsReachable(RaycastHit hit)
     {
         return companion.CanReachTarget(hit);
