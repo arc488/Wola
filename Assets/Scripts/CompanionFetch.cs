@@ -10,10 +10,11 @@ public class CompanionFetch : MonoBehaviour
     [SerializeField] GameObject markerPrefab = null;
     [SerializeField] CompanionMovement companion = null;
 
-    bool raycastingMarker = false;
     Vector3 rayOrigin;
     GameObject markerInstance = null;
     RaycastHit hit;
+
+    public bool raycastingMarker = false;
 
     private void Awake()
     {
@@ -31,6 +32,16 @@ public class CompanionFetch : MonoBehaviour
         {
             FetchRaycast();
         }
+
+        if (Input.GetButtonDown("ConfirmFetch"))
+        {
+            if (raycastingMarker)
+            {
+                companion.Fetch(hit);
+            }
+            Destroy(markerInstance);
+        }
+
     }
 
     private void ToggleRaycasting()
@@ -54,20 +65,25 @@ public class CompanionFetch : MonoBehaviour
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
-            if (hit.collider.tag == "Terrain" && IsReachable(hit))
-            {
-                if (markerInstance == null)
-                {
-                    markerInstance = Instantiate(markerPrefab, hit.transform);
-                    markerInstance.transform.position = hit.point;
-                }
-                else
-                {
-                    markerInstance.transform.position = hit.point + new Vector3(0, 2, 0);
-                }
-            }
+            MoveFetchMarker(hit);
         }
 
+    }
+
+    private void MoveFetchMarker(RaycastHit hit)
+    {
+        if (hit.collider.tag == "Terrain" && IsReachable(hit))
+        {
+            if (markerInstance == null)
+            {
+                markerInstance = Instantiate(markerPrefab, hit.transform);
+                markerInstance.transform.position = hit.point;
+            }
+            else
+            {
+                markerInstance.transform.position = hit.point + new Vector3(0, 2, 0);
+            }
+        }
     }
 
     private bool IsReachable(RaycastHit hit)

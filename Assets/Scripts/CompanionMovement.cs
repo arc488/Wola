@@ -13,7 +13,8 @@ public class CompanionMovement : MonoBehaviour
 
     public float distanceToPlayer = 0f;
     NavMeshAgent navMeshAgent;
-    
+    public bool isFetching = false;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -23,9 +24,10 @@ public class CompanionMovement : MonoBehaviour
     void Update()
     {
         distanceToPlayer = DistanceToPlayer();
+        if (isFetching) return;
         if (DistanceToPlayer() < minimumRadius) navMeshAgent.isStopped = true;
         if (DistanceToPlayer() < lingerRadius) return;
-        MoveToTarget(player.transform);
+        MoveToTarget(player.transform.position);
         
 
     }
@@ -49,16 +51,22 @@ public class CompanionMovement : MonoBehaviour
         return Vector3.Distance(transform.position, player.transform.position);
     }
 
-    private void MoveToTarget(Transform target)
+    public void Fetch(RaycastHit hit)
     {
-        navMeshAgent.isStopped = false;
-        SlerpTowardTarget(target);
-        navMeshAgent.SetDestination(target.position);
+        isFetching = true;
+        MoveToTarget(hit.point);
     }
 
-    private void SlerpTowardTarget(Transform target)
+    public void MoveToTarget(Vector3 position)
     {
-        var direction = target.position - transform.position;
+        navMeshAgent.isStopped = false;
+        SlerpTowardTarget(position);
+        navMeshAgent.SetDestination(position);
+    }
+
+    private void SlerpTowardTarget(Vector3 targetPosition)
+    {
+        var direction = targetPosition - transform.position;
         Quaternion lookAt = Quaternion.LookRotation(direction, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, rotationSpeed);
     }
