@@ -19,12 +19,15 @@ public class Enemy : MonoBehaviour
     GameObject player;
     Animator animatorController;
     float maxSpeed;
+    CompanionMovement companion;
+    GameObject m_Target;
 
     public bool isAttacking = false;
     public bool isChasing = false;
 
     void Start()
     {
+        companion = FindObjectOfType<CompanionMovement>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         animatorController = GetComponentInChildren<Animator>();
@@ -34,10 +37,23 @@ public class Enemy : MonoBehaviour
     {
         if (GetComponent<Health>().IsDead()) return;
         if (isAttacking) SlerpTowardTarget(player.transform);
+        m_Target = ChooseTarget();
         ChaseSequence();
         ControlAnimation();
         SetMovementSpeed();
         Attack();
+    }
+
+    private GameObject ChooseTarget()
+    {
+        if (companion.IsFetching())
+        {
+            return companion.gameObject;
+        }
+        else
+        {
+            return player;
+        }
     }
 
     private void SetMovementSpeed()
@@ -59,7 +75,7 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        if (DistanceToPlayer() < attackRange)
+        if (DistanceToTarget(m_Target.transform) < attackRange)
         {
             isAttacking = true;
             animatorController.SetTrigger("attack");
@@ -75,20 +91,20 @@ public class Enemy : MonoBehaviour
     {
         if (!chaseOnSpawn)
         {
-            if (IsWithinRange() && DistanceToPlayer() > attackRange)
+            if (IsWithinRange(m_Target.transform) && DistanceToTarget(m_Target.transform) > attackRange)
             {
                 isChasing = true;
-                MoveToTarget(player.transform);
+                MoveToTarget(m_Target.transform);
             }
             else
             {
                 isChasing = false;
             }
         }
-        else if (DistanceToPlayer() > attackRange)
+        else if (DistanceToTarget(m_Target.transform) > attackRange)
         {
             isChasing = true;
-            MoveToTarget(player.transform);
+            MoveToTarget(m_Target.transform);
         }
 
         if (navMeshAgent.remainingDistance < attackRange)
@@ -113,14 +129,14 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, rotationSpeed);
     }
 
-    private float DistanceToPlayer()
+    private float DistanceToTarget(Transform target)
     {
-        return Vector3.Distance(player.transform.position, transform.position);
+        return Vector3.Distance(target.transform.position, transform.position);
     }
 
-    public bool IsWithinRange()
+    public bool IsWithinRange(Transform target)
     {
-        if (Vector3.Distance(navMeshAgent.transform.position, player.transform.position) < chaseDistance)
+        if (Vector3.Distance(navMeshAgent.transform.position, target.position) < chaseDistance)
         {
             return true;
         }
