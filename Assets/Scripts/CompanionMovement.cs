@@ -15,7 +15,7 @@ public class CompanionMovement : MonoBehaviour
 
     public float distanceToPlayer = 0f;
     NavMeshAgent navMeshAgent;
-    public bool isFetching = false;
+    bool isFetching = false;
     Vector3 fetchPosition = Vector3.zero;
 
     private void Awake()
@@ -90,6 +90,11 @@ public class CompanionMovement : MonoBehaviour
         var direction = targetPosition - transform.position;
         Quaternion lookAt = Quaternion.LookRotation(direction, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, rotationSpeed);
+    }
+
+    public bool IsFetching()
+    {
+        return isFetching;
     }
 
 }
