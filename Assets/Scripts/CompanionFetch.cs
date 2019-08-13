@@ -9,6 +9,7 @@ public class CompanionFetch : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] GameObject markerPrefab = null;
     [SerializeField] CompanionMovement companion = null;
+    [SerializeField] float fetchNumber = 3f;
 
     Vector3 rayOrigin;
     GameObject markerInstance = null;
@@ -24,6 +25,8 @@ public class CompanionFetch : MonoBehaviour
 
     private void Update()
     {
+        if (fetchNumber <= 0) return;
+
         if (Input.GetButtonDown("CompanionFetch"))
         {
             ToggleRaycasting();
@@ -39,6 +42,7 @@ public class CompanionFetch : MonoBehaviour
             if (raycastingMarker)
             {
                 companion.Fetch(hit);
+                fetchNumber -= 1;
             }
             raycastingMarker = false;
             Destroy(markerInstance);
