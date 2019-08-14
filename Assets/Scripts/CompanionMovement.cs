@@ -30,6 +30,7 @@ public class CompanionMovement : MonoBehaviour
     void Update()
     {
         distanceToPlayer = DistanceToTarget(player.transform.position);
+        LookAtNearestEnemy();
         ControlAnimation();
         if (fetchPosition != Vector3.zero)
         {
@@ -38,12 +39,36 @@ public class CompanionMovement : MonoBehaviour
         if (isFetching) return;
 
         if (DistanceToTarget(player.transform.position) < minimumRadius) WaitForFetch();
-        else navMeshAgent.speed = speed;
 
         if (DistanceToTarget(player.transform.position) < lingerRadius) return;
+        navMeshAgent.speed = speed;
         MoveToTarget(player.transform.position);
         
 
+    }
+
+    private void LookAtNearestEnemy()
+    {
+        Transform nearestEnemy = NearestEnemy();
+        if (nearestEnemy == null) return;
+        SlerpTowardTarget(nearestEnemy.position);
+    }
+
+    private Transform NearestEnemy()
+    {
+        Transform closestEnemy = null;
+        float minimumDist = Mathf.Infinity;
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        if (enemies == null) return null;
+        foreach (Enemy enemy in enemies)
+        {
+            if (DistanceToTarget(enemy.transform.position) < minimumDist && !enemy.GetComponent<Health>().IsDead())
+            {
+                minimumDist = DistanceToTarget(enemy.transform.position);
+                closestEnemy = enemy.transform;
+            }
+        }
+        return closestEnemy;
     }
 
     private void ControlAnimation()
@@ -54,6 +79,7 @@ public class CompanionMovement : MonoBehaviour
 
     void WaitForFetch()
     {
+        LookAtNearestEnemy();
         navMeshAgent.speed = 0f;
         navMeshAgent.isStopped = true;
     }
