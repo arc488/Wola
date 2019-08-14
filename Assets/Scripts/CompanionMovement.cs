@@ -30,7 +30,6 @@ public class CompanionMovement : MonoBehaviour
     void Update()
     {
         distanceToPlayer = DistanceToTarget(player.transform.position);
-        LookAtNearestEnemy();
         ControlAnimation();
         if (fetchPosition != Vector3.zero)
         {
@@ -40,7 +39,11 @@ public class CompanionMovement : MonoBehaviour
 
         if (DistanceToTarget(player.transform.position) < minimumRadius) WaitForFetch();
 
-        if (DistanceToTarget(player.transform.position) < lingerRadius) return;
+        if (DistanceToTarget(player.transform.position) < lingerRadius)
+        {
+            LookAtNearestEnemy();
+            return;
+        }
         navMeshAgent.speed = speed;
         MoveToTarget(player.transform.position);
         
