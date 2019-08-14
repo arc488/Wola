@@ -12,10 +12,12 @@ public class CompanionMovement : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float rotationSpeed = 0.1f;
     [SerializeField] float fetchTolerance = 2f;
+    [SerializeField] float fetchWaitTime = 3f;
 
     public float distanceToPlayer = 0f;
     NavMeshAgent navMeshAgent;
     bool isFetching = false;
+    bool isWaiting = false;
     Vector3 fetchPosition = Vector3.zero;
     Animator animatorController;
 
@@ -33,17 +35,18 @@ public class CompanionMovement : MonoBehaviour
         ControlAnimation();
         if (fetchPosition != Vector3.zero)
         {
-            HasReachedFetchPosition();
+            StartCoroutine(HasReachedFetchPosition());
         }
+        if (isWaiting) LookAtNearestEnemy();
         if (isFetching) return;
 
-        if (DistanceToTarget(player.transform.position) < minimumRadius) WaitForFetch();
+        if (DistanceToTarget(player.transform.position) < minimumRadius) CompanionWait();
 
         if (DistanceToTarget(player.transform.position) < lingerRadius)
         {
-            LookAtNearestEnemy();
             return;
         }
+        isWaiting = false;
         navMeshAgent.speed = speed;
         MoveToTarget(player.transform.position);
         
@@ -80,18 +83,14 @@ public class CompanionMovement : MonoBehaviour
         animatorController.SetFloat("speed", movementSpeed);
     }
 
-    void WaitForFetch()
-    {
-        LookAtNearestEnemy();
-        navMeshAgent.speed = 0f;
-        navMeshAgent.isStopped = true;
-    }
-
-    private void HasReachedFetchPosition()
+    IEnumerator HasReachedFetchPosition()
     {
         if (DistanceToTarget(fetchPosition) < fetchTolerance)
         {
             fetchPosition = Vector3.zero;
+            CompanionWait();
+            yield return new WaitForSeconds(fetchWaitTime);
+            isWaiting = false;
             isFetching = false;
         }
         else
@@ -112,6 +111,13 @@ public class CompanionMovement : MonoBehaviour
         {
             return false;
         }
+    }
+
+    void CompanionWait()
+    {
+        isWaiting = true;
+        navMeshAgent.speed = 0f;
+        navMeshAgent.isStopped = true;
     }
 
     public float DistanceToTarget(Vector3 target)

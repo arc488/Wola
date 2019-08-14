@@ -11,6 +11,7 @@ public class CompanionFetch : MonoBehaviour
     [SerializeField] CompanionMovement companion = null;
     [SerializeField] float fetchNumber = 3f;
 
+
     Vector3 rayOrigin;
     GameObject markerInstance = null;
     RaycastHit hit;
@@ -96,6 +97,7 @@ public class CompanionFetch : MonoBehaviour
     {
         return fetchNumber;
     }
+
 
     private bool IsReachable(RaycastHit hit)
     {
