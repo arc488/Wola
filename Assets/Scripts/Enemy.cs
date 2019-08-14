@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (GetComponent<Health>().IsDead()) return;
-        if (isAttacking) SlerpTowardTarget(player.transform);
         m_Target = ChooseTarget();
+        if (isAttacking) SlerpTowardTarget(m_Target.transform);
         ChaseSequence();
         ControlAnimation();
         SetMovementSpeed();
