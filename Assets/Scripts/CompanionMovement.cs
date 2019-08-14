@@ -17,26 +17,45 @@ public class CompanionMovement : MonoBehaviour
     NavMeshAgent navMeshAgent;
     bool isFetching = false;
     Vector3 fetchPosition = Vector3.zero;
+    Animator animatorController;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animatorController = GetComponentInChildren<Animator>();
+
     }
 
     void Update()
     {
         distanceToPlayer = DistanceToTarget(player.transform.position);
+        ControlAnimation();
         if (fetchPosition != Vector3.zero)
         {
             HasReachedFetchPosition();
         }
         if (isFetching) return;
-        if (DistanceToTarget(player.transform.position) < minimumRadius) navMeshAgent.isStopped = true;
+
+        if (DistanceToTarget(player.transform.position) < minimumRadius) WaitForFetch();
+        else navMeshAgent.speed = speed;
+
         if (DistanceToTarget(player.transform.position) < lingerRadius) return;
         MoveToTarget(player.transform.position);
         
 
+    }
+
+    private void ControlAnimation()
+    {
+        var movementSpeed = navMeshAgent.speed / speed;
+        animatorController.SetFloat("speed", movementSpeed);
+    }
+
+    void WaitForFetch()
+    {
+        navMeshAgent.speed = 0f;
+        navMeshAgent.isStopped = true;
     }
 
     private void HasReachedFetchPosition()
@@ -73,6 +92,7 @@ public class CompanionMovement : MonoBehaviour
 
     public void Fetch(RaycastHit hit)
     {
+        navMeshAgent.speed = speed;
         fetchPosition = hit.point;
         isFetching = true;
         MoveToTarget(hit.point);
