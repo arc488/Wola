@@ -84,17 +84,8 @@ public class Shooting : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
         {
-            CauseDamage(hit);
             equippedGun.PlayImpactEffects(hit.point);
         }
     }
 
-
-
-    private void CauseDamage(RaycastHit hit)
-    {
-        Health target = hit.transform.GetComponent<Health>();
-        if (target == null) return;
-        target.TakeDamge(equippedGun.GetDamage());
-    }
 }
