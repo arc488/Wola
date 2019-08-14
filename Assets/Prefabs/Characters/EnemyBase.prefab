@@ -87,17 +87,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 10
-  attackRange: 2
-  path: {fileID: 0}
+  attackRange: 3
   chaseSpeed: 1
-  patrolSpeed: 0.243
   speedMultiplier: 2
   rotationSpeed: 1
-  enemyPatrolling: 0
   chaseOnSpawn: 1
-  isAttacking: 1
+  isAttacking: 0
   isChasing: 0
-  isPatrolling: 0
 --- !u!114 &609375409
 MonoBehaviour:
   m_ObjectHideFlags: 0
