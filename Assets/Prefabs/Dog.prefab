@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  lingerRadius: 5
-  minimumRadius: 3
+  lingerRadius: 7
+  minimumRadius: 5
   speed: 5
   rotationSpeed: 0.1
   fetchTolerance: 2

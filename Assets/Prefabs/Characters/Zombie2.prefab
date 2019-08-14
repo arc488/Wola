@@ -12,31 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie2
       objectReference: {fileID: 0}
-    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: chaseSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: patrolSpeed
-      value: 0.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: speedMultiplier
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: isAttacking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: isChasing
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4020986455280522597, guid: 1a60fdfe346097440a603f61fdde7247,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,6 +65,31 @@ PrefabInstance:
     - target: {fileID: 4020986455280522597, guid: 1a60fdfe346097440a603f61fdde7247,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: chaseSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: patrolSpeed
+      value: 0.243
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: speedMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: isAttacking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379357896438083402, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: isChasing
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
