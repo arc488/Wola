@@ -1335,6 +1335,9 @@ MonoBehaviour:
     type: 3}
   companion: {fileID: 0}
   fetchNumber: 3
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 3840
   raycastingMarker: 0
 --- !u!1 &1917423652860437307
 GameObject:

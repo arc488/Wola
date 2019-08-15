@@ -10,7 +10,7 @@ public class CompanionFetch : MonoBehaviour
     [SerializeField] GameObject markerPrefab = null;
     [SerializeField] CompanionMovement companion = null;
     [SerializeField] float fetchNumber = 3f;
-
+    [SerializeField] LayerMask ignoreLayer;
 
     Vector3 rayOrigin;
     GameObject markerInstance = null;
@@ -70,7 +70,7 @@ public class CompanionFetch : MonoBehaviour
     public void FetchRaycast()
     {
         rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
-        if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f))
+        if (Physics.Raycast(rayOrigin, camera.transform.forward, out hit, 50f, ~ignoreLayer))
         {
             MoveFetchMarker(hit);
         }
