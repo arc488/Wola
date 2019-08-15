@@ -25,7 +25,6 @@ public class BulletScript : MonoBehaviour {
     }
 
     /*
-	* Uppon bullet creation with this script attatched,
 	* bullet creates a raycast which searches for corresponding tags.
 	* If raycast finds somethig it will create a decal of corresponding tag.
 	*/
