@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3557886291590980771}
   - component: {fileID: 3557886291590980765}
   - component: {fileID: 3557886291590980770}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,10 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 0.1
   fetchTolerance: 2
+  fetchWaitTime: 3
   distanceToPlayer: 0
+  isFetching: 0
+  isWaiting: 0
 --- !u!195 &3557886291590980770
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -83,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260683}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tail2_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260705}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mouth_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260713}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260715}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260719}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: kiefer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260721}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spine4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260723}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260725}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260727}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260729}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260733}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260735}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260737}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260739}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260741}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260743}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss4_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260745}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260747}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss2_L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260749}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260751}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss2_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260753}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,7 +765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260755}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260757}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260759}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260761}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260763}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss4_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -915,7 +918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260765}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -947,7 +950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260767}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,7 +981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260769}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm_L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260771}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,7 +1043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260773}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,7 +1074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260775}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260777}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260779}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260781}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,7 +1198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260783}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: arm3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9111977784243260785}
   - component: {fileID: 9111977784254995531}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260789}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fuss2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260791}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dogArmature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,7 +1408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260793}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1439,7 +1442,7 @@ GameObject:
   - component: {fileID: 9111977784243260795}
   - component: {fileID: 9111977784250786443}
   - component: {fileID: 7781016886515417432}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: benny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,7 +1507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260797}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bodyFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1536,7 +1539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111977784243260799}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bodyBehind
   m_TagString: Untagged
   m_Icon: {fileID: 0}

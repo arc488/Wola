@@ -23,7 +23,6 @@ public class MovementDetector : MonoBehaviour
             return;
         }
 
-        if (other.tag != "Player") return;
         lightSet.TurnOn();
 
     }

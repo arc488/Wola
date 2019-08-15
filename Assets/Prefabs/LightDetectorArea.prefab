@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8550438729635500758}
   - component: {fileID: 7289154385876882}
   - component: {fileID: 8769241272897645342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightDetectorArea
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}

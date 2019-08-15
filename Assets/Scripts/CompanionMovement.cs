@@ -11,13 +11,13 @@ public class CompanionMovement : MonoBehaviour
     [SerializeField] float minimumRadius = 3f;
     [SerializeField] float speed = 5f;
     [SerializeField] float rotationSpeed = 0.1f;
-    [SerializeField] float fetchTolerance = 2f;
+    [SerializeField] float fetchTolerance = 0.5f;
     [SerializeField] float fetchWaitTime = 3f;
 
     public float distanceToPlayer = 0f;
     NavMeshAgent navMeshAgent;
-    bool isFetching = false;
-    bool isWaiting = false;
+    public bool isFetching = false;
+    public bool isWaiting = false;
     Vector3 fetchPosition = Vector3.zero;
     Animator animatorController;
 
@@ -127,6 +127,7 @@ public class CompanionMovement : MonoBehaviour
 
     public void Fetch(RaycastHit hit)
     {
+        isWaiting = false;
         navMeshAgent.speed = speed;
         fetchPosition = hit.point;
         isFetching = true;
