@@ -21,6 +21,11 @@ public class CompanionMovement : MonoBehaviour
     Vector3 fetchPosition = Vector3.zero;
     Animator animatorController;
 
+    //Player avoidance variables
+    Vector3 avoidDirection;
+    Vector3 avoidDestination;
+    public bool isAvoding = false;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -29,18 +34,31 @@ public class CompanionMovement : MonoBehaviour
 
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(avoidDirection, 0.3f);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(avoidDestination, 0.3f);
+    }
+
+
     void Update()
     {
         distanceToPlayer = DistanceToTarget(player.transform.position);
         ControlAnimation();
+
         if (fetchPosition != Vector3.zero)
         {
             StartCoroutine(HasReachedFetchPosition());
         }
+
+
         if (isWaiting) LookAtNearestEnemy();
         if (isFetching) return;
 
-        if (DistanceToTarget(player.transform.position) < minimumRadius) CompanionWait();
+        if (DistanceToTarget(avoidDestination) < 1.5f) isAvoding = false;
+
+        if (DistanceToTarget(player.transform.position) < minimumRadius && !isAvoding) CompanionWait();
 
         if (DistanceToTarget(player.transform.position) < lingerRadius)
         {
@@ -50,6 +68,21 @@ public class CompanionMovement : MonoBehaviour
         navMeshAgent.speed = speed;
         MoveToTarget(player.transform.position);
         
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("Collided");
+        avoidDirection = collision.contacts[0].point - transform.position;
+        avoidDirection = avoidDirection.normalized;
+
+        avoidDestination = transform.position - avoidDirection * 2;
+        avoidDestination.y = transform.position.y;
+
+        isAvoding = true;
+
+        MoveToTarget(avoidDestination);
 
     }
 
@@ -136,6 +169,8 @@ public class CompanionMovement : MonoBehaviour
 
     public void MoveToTarget(Vector3 position)
     {
+        isWaiting = false;
+        navMeshAgent.speed = speed;
         navMeshAgent.isStopped = false;
         SlerpTowardTarget(position);
         navMeshAgent.SetDestination(position);
