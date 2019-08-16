@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3557886291590980771}
   - component: {fileID: 3557886291590980765}
   - component: {fileID: 3557886291590980770}
+  - component: {fileID: 1388093547}
+  - component: {fileID: 7739433415024703634}
   m_Layer: 11
   m_Name: Dog
   m_TagString: Untagged
@@ -77,6 +79,31 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1388093547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557886291590980768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fd36912bd520a48962088af6bdc25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &7739433415024703634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557886291590980768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49264017, y: 0.88027406, z: 1.6763062}
+  m_Center: {x: 0.004567638, y: 0.4490279, z: 0.13532805}
 --- !u!1 &9111977784243491051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1468,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9111977784243260795}
   - component: {fileID: 9111977784250786443}
-  - component: {fileID: 7781016886515417432}
   m_Layer: 11
   m_Name: benny
   m_TagString: Untagged
@@ -1484,20 +1510,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &7781016886515417432
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9111977784243491163}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 1.2
-  m_Direction: 1
-  m_Center: {x: -0.3368647, y: 1, z: 0}
 --- !u!1 &9111977784243491165
 GameObject:
   m_ObjectHideFlags: 0
