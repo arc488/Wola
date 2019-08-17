@@ -10,9 +10,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] float spawnFrequency = 1f;
     [SerializeField] Progression progression = null;
     [SerializeField] float enemyNumberMultiplier = 10f;
+    [SerializeField] float countdownLength = 5f;
 
     public int currentLevel = 1;
     public int enemiesKilledThisRound = 0;
+
+    public float levelCountdown = 0f;
+    public bool isCountdownActive = false;
 
     public bool spawnTimer = true;
     public static int numberOfEnemies = 0;
@@ -33,7 +37,13 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+
+        if (isCountdownActive) levelCountdown += Time.deltaTime;
+
         CheckIfLevelCompleted();
+
+
+        if (isCountdownActive) return;
 
         if (spawnTimer)
         {
@@ -46,18 +56,32 @@ public class Spawner : MonoBehaviour
     {
         if (enemiesKilledThisRound >= maxEnemies)
         {
-            currentLevel += 1;
-            enemiesKilledThisRound = 0;
-            numberOfEnemies = 0;
-            if (currentLevel < progression.NumberOfLevels())
-            {
-                maxEnemies = progression.GetSpawnLevel(currentLevel) * enemyNumberMultiplier;
-            }
-            else
-            {
-                maxEnemies = progression.GetSpawnLevel((int)progression.NumberOfLevels()) * enemyNumberMultiplier;
-            }
+
+            isCountdownActive = true;
+            StartCoroutine(AdvanceToNextLevel());
+
         }
+    }
+
+    IEnumerator AdvanceToNextLevel()
+    {
+        currentLevel += 1;
+        enemiesKilledThisRound = 0;
+        numberOfEnemies = 0;
+
+        if (!isCountdownActive) levelCountdown = 0;
+        yield return new WaitUntil(() => levelCountdown >= countdownLength);
+
+        if (currentLevel < progression.NumberOfLevels())
+        {
+            maxEnemies = progression.GetSpawnLevel(currentLevel) * enemyNumberMultiplier;
+        }
+        else
+        {
+            maxEnemies = progression.GetSpawnLevel((int)progression.NumberOfLevels()) * enemyNumberMultiplier;
+        }
+        levelCountdown = 0f;
+        isCountdownActive = false;
     }
 
     IEnumerator SpawnEnemies()
@@ -67,7 +91,7 @@ public class Spawner : MonoBehaviour
 
         yield return new WaitForSeconds(spawnFrequency);
 
-        if (numberOfEnemies < maxEnemies)
+        if (!isCountdownActive && numberOfEnemies < maxEnemies)
         {
             
             KeepTrackOfSpawns(enemyToSpawn);
