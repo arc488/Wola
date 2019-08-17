@@ -7,6 +7,10 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float health = 100f;
 
+    [SerializeField] int headshotsToDie = 2;
+
+    public int headshotCount = 0;
+
     bool isDead = false;
     Animator animator;
     NavMeshAgent navMeshAgent;
@@ -29,6 +33,13 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+        if (headshotCount >= headshotsToDie && isDead == false)
+        {
+            isDead = true;
+            health = 0;
+            Die();
+        }
+
         if (health <= 0 && isDead == false)
         {
             isDead = true;
@@ -56,6 +67,12 @@ public class Health : MonoBehaviour
         spawner.decreaseEnemyCount();
 
 
+    }
+
+    public void Headshot(float damage)
+    {
+        health -= damage;
+        headshotCount += 1;
     }
 
     public bool IsDead()
