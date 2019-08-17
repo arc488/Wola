@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
 
     public bool spawnTimer = true;
 
-    public SpawnerManager spawnerManager;
+    public SpawnerManager sm;
 
     private void OnDrawGizmos()
     {
@@ -23,19 +23,19 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        spawnerManager = SpawnerManager.Instance;
-        spawnerManager.maxEnemies = progression.GetSpawnLevel(spawnerManager.currentLevel) * enemyNumberMultiplier;
+        sm = SpawnerManager.Instance;
+        sm.maxEnemies = progression.GetSpawnLevel(sm.currentLevel) * enemyNumberMultiplier;
     }
 
     private void Update()
     {
 
-        if (spawnerManager.isCountdownActive) spawnerManager.levelCountdown += Time.deltaTime;
+        if (sm.isCountdownActive) sm.levelCountdown += Time.deltaTime;
 
         CheckIfLevelCompleted();
 
 
-        if (spawnerManager.isCountdownActive) return;
+        if (sm.isCountdownActive) return;
 
         if (spawnTimer)
         {
@@ -46,10 +46,10 @@ public class Spawner : MonoBehaviour
 
     private void CheckIfLevelCompleted()
     {
-        if (spawnerManager.enemiesKilledThisRound >= spawnerManager.maxEnemies)
+        if (sm.enemiesKilledThisRound >= sm.maxEnemies)
         {
 
-            spawnerManager.isCountdownActive = true;
+            sm.isCountdownActive = true;
             StartCoroutine(AdvanceToNextLevel());
 
         }
@@ -57,23 +57,23 @@ public class Spawner : MonoBehaviour
 
     IEnumerator AdvanceToNextLevel()
     {
-        spawnerManager.currentLevel += 1;
-        spawnerManager.enemiesKilledThisRound = 0;
-        spawnerManager.numberOfLivingEnemies = 0;
+        sm.currentLevel += 1;
+        sm.enemiesKilledThisRound = 0;
+        sm.numberOfLivingEnemies = 0;
 
-        if (!spawnerManager.isCountdownActive) spawnerManager.levelCountdown = 0;
-        yield return new WaitUntil(() => spawnerManager.levelCountdown >= countdownLength);
+        if (!sm.isCountdownActive) sm.levelCountdown = 0;
+        yield return new WaitUntil(() => sm.levelCountdown >= countdownLength);
 
-        if (spawnerManager.currentLevel < progression.NumberOfLevels())
+        if (sm.currentLevel < progression.NumberOfLevels())
         {
-            spawnerManager.maxEnemies = progression.GetSpawnLevel(spawnerManager.currentLevel) * enemyNumberMultiplier;
+            sm.maxEnemies = progression.GetSpawnLevel(sm.currentLevel) * enemyNumberMultiplier;
         }
         else
         {
-            spawnerManager.maxEnemies = progression.GetSpawnLevel((int)progression.NumberOfLevels()) * enemyNumberMultiplier;
+            sm.maxEnemies = progression.GetSpawnLevel((int)progression.NumberOfLevels()) * enemyNumberMultiplier;
         }
-        spawnerManager.levelCountdown = 0f;
-        spawnerManager.isCountdownActive = false;
+        sm.levelCountdown = 0f;
+        sm.isCountdownActive = false;
     }
 
     IEnumerator SpawnEnemies()
@@ -83,63 +83,51 @@ public class Spawner : MonoBehaviour
 
         yield return new WaitForSeconds(spawnFrequency);
 
-        if (!spawnerManager.isCountdownActive && spawnerManager.numberOfLivingEnemies < spawnerManager.maxEnemies)
+        if (!sm.isCountdownActive && sm.numberOfLivingEnemies < sm.maxEnemies)
         {
             
             KeepTrackOfSpawns(enemyToSpawn);
             Instantiate(enemyToSpawn, transform);
-            spawnerManager.numberOfLivingEnemies++;
+            sm.numberOfLivingEnemies++;
         }
         spawnTimer = true;
     }
 
     private GameObject ChooseUniqueEnemey()
     {
-        GameObject enemyToSpawn;
-        if (spawnerManager.lastSpawn != null && spawnerManager.secondToLastSpawn != null)
-        {
-            if (spawnerManager.lastSpawn == spawnerManager.secondToLastSpawn)
-            {
-                foreach (GameObject enemy in enemies)
-                {
-                    if (enemy != spawnerManager.lastSpawn)
-                    {
-                        enemyToSpawn = enemy;
-                        return enemyToSpawn;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-            }
-            else
-            {
-                enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length))];
-                return enemyToSpawn;
-            }
-        }
-        else
+        GameObject enemyToSpawn = null;
+        if (sm.lastSpawn == null)
         {
             enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length))];
             return enemyToSpawn;
+        }
+        if (sm.lastSpawn != null)
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy != sm.lastSpawn)
+                {
+                    enemyToSpawn = enemy;
+                    return enemy;
+                }
+            }
         }
         return null;
     }
 
     private void KeepTrackOfSpawns(GameObject enemy)
     {
-        spawnerManager.secondToLastSpawn = spawnerManager.lastSpawn;
-        spawnerManager.lastSpawn = enemy;
+        //sm.secondToLastSpawn = sm.lastSpawn;
+        sm.lastSpawn = enemy;
     }
 
     public void IncrementKilledThisRound()
     {
-        spawnerManager.enemiesKilledThisRound += 1;
+        sm.enemiesKilledThisRound += 1;
     }
 
     public void decreaseEnemyCount()
     {
-        spawnerManager.numberOfLivingEnemies--;
+        sm.numberOfLivingEnemies--;
     }
 }

@@ -17,5 +17,4 @@ public class SpawnerManager : GenericSingletonClass<SpawnerManager>
     public int numberOfLivingEnemies = 0;
 
     public GameObject lastSpawn = null;
-    public GameObject secondToLastSpawn = null;
 }
