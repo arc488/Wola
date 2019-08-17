@@ -71,7 +71,8 @@ public class Health : MonoBehaviour
         }
         capsuleCollider.enabled = false;
         obstacle.enabled = false;
-        spawner.decreaseEnemyCount();
+        spawner.IncrementKilledThisRound();
+        Destroy(gameObject, 5f);
 
 
     }

@@ -6,11 +6,16 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemies;
-    [SerializeField] int maxEnemies = 3;
+    [SerializeField] float maxEnemies = 3;
     [SerializeField] float spawnFrequency = 1f;
+    [SerializeField] Progression progression = null;
+    [SerializeField] float enemyNumberMultiplier = 10f;
+
+    public int currentLevel = 1;
+    public int enemiesKilledThisRound = 0;
 
     public bool spawnTimer = true;
-    static int numberOfEnemies = 0;
+    public static int numberOfEnemies = 0;
 
     public GameObject lastSpawn = null;
     public GameObject secondToLastSpawn = null;
@@ -21,12 +26,37 @@ public class Spawner : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.5f);
     }
 
+    private void Start()
+    {
+        maxEnemies = progression.GetSpawnLevel(currentLevel) * enemyNumberMultiplier;
+    }
+
     private void Update()
     {
+        CheckIfLevelCompleted();
+
         if (spawnTimer)
         {
             StartCoroutine(SpawnEnemies());
             spawnTimer = false;
+        }
+    }
+
+    private void CheckIfLevelCompleted()
+    {
+        if (enemiesKilledThisRound >= maxEnemies)
+        {
+            currentLevel += 1;
+            enemiesKilledThisRound = 0;
+            numberOfEnemies = 0;
+            if (currentLevel < progression.NumberOfLevels())
+            {
+                maxEnemies = progression.GetSpawnLevel(currentLevel) * enemyNumberMultiplier;
+            }
+            else
+            {
+                maxEnemies = progression.GetSpawnLevel((int)progression.NumberOfLevels()) * enemyNumberMultiplier;
+            }
         }
     }
 
@@ -85,6 +115,11 @@ public class Spawner : MonoBehaviour
     {
         secondToLastSpawn = lastSpawn;
         lastSpawn = enemy;
+    }
+
+    public void IncrementKilledThisRound()
+    {
+        enemiesKilledThisRound += 1;
     }
 
     public void decreaseEnemyCount()
