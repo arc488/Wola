@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class BulletScript : MonoBehaviour {
 
@@ -41,11 +42,24 @@ public class BulletScript : MonoBehaviour {
 					Destroy(gameObject);
                     CauseDamage(hit);
 				}
-			}		
+                if (hit.collider.tag == "Headshot")
+                {
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(gameObject);
+                    Headshot(hit);
+                }
+            }		
 			Destroy(gameObject);
 		}
 		Destroy(gameObject, 0.1f);
 	}
+
+    private void Headshot(RaycastHit hit)
+    {
+        Health target = hit.collider.GetComponentInParent<Health>();
+        if (target == null) return;
+        target.Headshot(equippedGun.GetComponent<GunScript>().gunDamage);   
+    }
 
     private void CauseDamage(RaycastHit hit)
     {
