@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105673762583953793}
   m_LocalRotation: {x: -0.06922461, y: 0.10179895, z: 0.07722219, w: 0.9893845}
-  m_LocalPosition: {x: 0.011, y: 0.131, z: 0.071}
+  m_LocalPosition: {x: -0.005, y: 0.114, z: 0.077}
   m_LocalScale: {x: 0.3999999, y: 0.40000004, z: 0.4}
   m_Children: []
   m_Father: {fileID: 109602427975142437}
@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105673762583953793}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -180,6 +180,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f6e867e7d7db9e48abcb117233235b1, type: 3}
+--- !u!1 &109602427975307269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 9f6e867e7d7db9e48abcb117233235b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 109602427975276193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &109602427975142437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 9f6e867e7d7db9e48abcb117233235b1,
@@ -198,6 +204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie4
       objectReference: {fileID: 0}
+    - target: {fileID: 609375409, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 109602427975307269}
     - target: {fileID: 15481262790164473, guid: 1a60fdfe346097440a603f61fdde7247,
         type: 3}
       propertyPath: m_Height

@@ -15,6 +15,7 @@ TagManager:
   - SecondCamera
   - LevelPart
   - Weapon
+  - Headshot
   layers:
   - Default
   - TransparentFX

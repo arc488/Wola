@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     [SerializeField] float health = 100f;
 
     [SerializeField] int headshotsToDie = 2;
+    [SerializeField] AudioClip headshotSound;
+    [SerializeField] GameObject head;
 
     public int headshotCount = 0;
 
@@ -17,12 +19,14 @@ public class Health : MonoBehaviour
     Spawner spawner;
     Collider capsuleCollider;
     NavMeshObstacle obstacle;
+    AudioSource audioSource;
 
 
     private void Start()
     {
         if (this.tag == "Enemy")
         {
+            audioSource = GetComponent<AudioSource>();
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();
             spawner = GameObject.FindObjectOfType<Spawner>();
@@ -37,6 +41,9 @@ public class Health : MonoBehaviour
         {
             isDead = true;
             health = 0;
+            Destroy(head);
+            audioSource.clip = headshotSound;
+            audioSource.Play();
             Die();
         }
 
