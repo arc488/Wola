@@ -73,7 +73,6 @@ public class CompanionMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Collided");
         avoidDirection = collision.contacts[0].point - transform.position;
         avoidDirection = avoidDirection.normalized;
 
