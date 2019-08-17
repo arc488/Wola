@@ -117,7 +117,6 @@ public class Spawner : MonoBehaviour
 
     private void KeepTrackOfSpawns(GameObject enemy)
     {
-        //sm.secondToLastSpawn = sm.lastSpawn;
         sm.lastSpawn = enemy;
     }
 
