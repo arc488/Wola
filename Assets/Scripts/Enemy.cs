@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     float maxSpeed;
     CompanionMovement companion;
     GameObject m_Target;
+    ZombieSounds zs; 
 
     public bool isAttacking = false;
     public bool isChasing = false;
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         animatorController = GetComponentInChildren<Animator>();
+        zs = GetComponent<ZombieSounds>();
     }
 
     void Update()
@@ -78,6 +80,7 @@ public class Enemy : MonoBehaviour
         if (DistanceToTarget(m_Target.transform) < attackRange)
         {
             isAttacking = true;
+            zs.PlayAttackSounds();
             animatorController.SetTrigger("attack");
         }
         else
@@ -141,5 +144,10 @@ public class Enemy : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool IsAttacking()
+    {
+        return isAttacking;
     }
 }
