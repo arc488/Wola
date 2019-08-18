@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] float enemyNumberMultiplier = 10f;
     [SerializeField] float countdownLength = 5f;
 
+    public GameObject lastSpawn = null;
+
     public bool spawnTimer = true;
 
     public SoundtrackController sc;
@@ -102,19 +104,20 @@ public class Spawner : MonoBehaviour
     private GameObject ChooseUniqueEnemey()
     {
         GameObject enemyToSpawn = null;
-        if (sm.lastSpawn == null)
+        if (lastSpawn == null)
         {
             enemyToSpawn = enemies[Mathf.RoundToInt(UnityEngine.Random.Range(0, enemies.Length))];
             return enemyToSpawn;
         }
-        if (sm.lastSpawn != null)
+        if (lastSpawn != null)
         {
+            print(lastSpawn + gameObject.name);
             foreach (GameObject enemy in enemies)
             {
-                if (enemy != sm.lastSpawn)
+                if (enemy != lastSpawn)
                 {
                     enemyToSpawn = enemy;
-                    return enemy;
+                    return enemyToSpawn;
                 }
             }
         }
