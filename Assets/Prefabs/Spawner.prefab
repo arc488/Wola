@@ -47,5 +47,10 @@ MonoBehaviour:
   - {fileID: 2122855104662090980, guid: ac559fe295dd65649b9227c15e6508aa, type: 3}
   - {fileID: 438090171750052112, guid: ac468f248f5145f469bf70a29b30bc7f, type: 3}
   - {fileID: 3376474856732037192, guid: 2bb6181f45027e74ca534af1a44afb53, type: 3}
-  maxEnemies: 3
-  numberOfEnemies: 0
+  spawnFrequency: 2
+  progression: {fileID: 11400000, guid: 5c7b0da3045832f48a2a3b95b6f5243b, type: 2}
+  enemyNumberMultiplier: 2
+  countdownLength: 10
+  spawnTimer: 1
+  sc: {fileID: 0}
+  sm: {fileID: 0}
