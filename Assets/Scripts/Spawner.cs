@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour
 
     public bool spawnTimer = true;
 
+    public SoundtrackController sc;
+
     public SpawnerManager sm;
 
     private void OnDrawGizmos()
@@ -24,6 +26,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         sm = SpawnerManager.Instance;
+        sc = FindObjectOfType<SoundtrackController>();
         sm.maxEnemies = progression.GetSpawnLevel(sm.currentLevel) * enemyNumberMultiplier;
     }
 
@@ -57,12 +60,15 @@ public class Spawner : MonoBehaviour
 
     IEnumerator AdvanceToNextLevel()
     {
+        //sc.FadeOut();
         sm.currentLevel += 1;
         sm.enemiesKilledThisRound = 0;
         sm.numberOfLivingEnemies = 0;
 
         if (!sm.isCountdownActive) sm.levelCountdown = 0;
         yield return new WaitUntil(() => sm.levelCountdown >= countdownLength);
+
+        //sc.FadeIn();
 
         if (sm.currentLevel < progression.NumberOfLevels())
         {
