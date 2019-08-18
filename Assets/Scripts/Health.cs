@@ -14,12 +14,15 @@ public class Health : MonoBehaviour
     public int headshotCount = 0;
 
     bool isDead = false;
+    bool wasHeadshot = false;
+
     Animator animator;
     NavMeshAgent navMeshAgent;
     Spawner spawner;
     Collider capsuleCollider;
     NavMeshObstacle obstacle;
     AudioSource audioSource;
+    ZombieSounds zombieSounds;
 
 
     private void Start()
@@ -32,6 +35,7 @@ public class Health : MonoBehaviour
             spawner = GameObject.FindObjectOfType<Spawner>();
             capsuleCollider = GetComponent<CapsuleCollider>();
             obstacle = GetComponent<NavMeshObstacle>();
+            zombieSounds = GetComponent<ZombieSounds>();
         }
     }
 
@@ -40,6 +44,7 @@ public class Health : MonoBehaviour
         if (headshotCount >= headshotsToDie && isDead == false)
         {
             isDead = true;
+            wasHeadshot = true;
             health = 0;
             Destroy(head);
             audioSource.clip = headshotSound;
@@ -69,6 +74,7 @@ public class Health : MonoBehaviour
             animator.applyRootMotion = true;
             animator.SetTrigger("die");           
         }
+        if (!wasHeadshot) zombieSounds.PlayDeathSounds();
         capsuleCollider.enabled = false;
         obstacle.enabled = false;
         spawner.IncrementKilledThisRound();
