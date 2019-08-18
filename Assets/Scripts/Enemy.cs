@@ -13,6 +13,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speedMultiplier = 1f;
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] bool chaseOnSpawn = true;
+    [Range(0, 1)]
+    [SerializeField] float lowerSpeedLimit = 0.5f;
+    [Range(0, 1)]
+    [SerializeField] float upperSpeedLimit = 1f;
 
 
     NavMeshAgent navMeshAgent;
@@ -33,7 +37,11 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         animatorController = GetComponentInChildren<Animator>();
         zs = GetComponent<ZombieSounds>();
+
+        RandomChaseSpeed();
     }
+
+
 
     void Update()
     {
@@ -44,6 +52,11 @@ public class Enemy : MonoBehaviour
         ControlAnimation();
         SetMovementSpeed();
         Attack();
+    }
+
+    private void RandomChaseSpeed()
+    {
+        chaseSpeed = UnityEngine.Random.Range(lowerSpeedLimit, upperSpeedLimit);
     }
 
     private GameObject ChooseTarget()
