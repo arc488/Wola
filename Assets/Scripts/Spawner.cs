@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] float spawnFrequency = 1f;
     [SerializeField] Progression progression = null;
     [SerializeField] float enemyNumberMultiplier = 10f;
-    [SerializeField] float countdownLength = 5f;
+    [SerializeField] float countdownLength = 10f;
 
     public GameObject lastSpawn = null;
 
@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
 
-        if (sm.isCountdownActive) sm.levelCountdown += Time.deltaTime;
+        if (sm.isCountdownActive) sm.levelCountdown += Time.deltaTime/2;
 
         CheckIfLevelCompleted();
 
