@@ -19,8 +19,9 @@ public class MouseLookScript : MonoBehaviour {
 	* Triggering the headbob camera omvement if player is faster than 1 of speed
 	*/
 	void  Update(){
+        if (PauseGameSingleton.Instance.isPaused) return;
 
-		MouseInputMovement();
+        MouseInputMovement();
 
 		if (Input.GetKeyDown (KeyCode.L)) {
 			Cursor.lockState = CursorLockMode.Locked;
@@ -67,11 +68,13 @@ public class MouseLookScript : MonoBehaviour {
 * If aiming set the mouse sensitvity from our variables and vice versa.
 */
 void FixedUpdate(){
+    if (PauseGameSingleton.Instance.isPaused) return;
 
-	/*
-	 * Reduxing mouse sensitvity if we are aiming.
-	 */
-	if(Input.GetAxis("Fire2") != 0){
+        /*
+         * Reduxing mouse sensitvity if we are aiming.
+         */
+
+    if (Input.GetAxis("Fire2") != 0){
 		mouseSensitvity = mouseSensitvity_aiming;
 	}
 	else if(GetComponent<PlayerMovementScript>().maxSpeed > 5){

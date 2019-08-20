@@ -16,6 +16,8 @@ public class MovementDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
 
         if (lightSet == null)
         {

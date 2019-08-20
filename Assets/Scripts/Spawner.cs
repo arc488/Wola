@@ -34,6 +34,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
 
         if (sm.isCountdownActive) sm.levelCountdown += Time.deltaTime/2;
 

@@ -32,6 +32,8 @@ public class ZombieSounds : MonoBehaviour
 
     void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
         timeSinceLastClip += Time.deltaTime;
 
 

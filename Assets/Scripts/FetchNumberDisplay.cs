@@ -28,6 +28,8 @@ public class FetchNumberDisplay : MonoBehaviour
 
     void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
         if (companionFetch != null)
         {
             remainingFetchNumber = companionFetch.RemainingFetch();          

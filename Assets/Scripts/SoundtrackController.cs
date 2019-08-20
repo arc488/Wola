@@ -9,6 +9,7 @@ public class SoundtrackController : MonoBehaviour
     [SerializeField] AudioClip siren = null;
     [SerializeField] AudioClip soundtrack = null;
     [SerializeField] float soundtrackVolume = 0.7f;
+    public bool soundtrackStarted = false;
     AudioSource audioSource;
     float currentVolume;
     
@@ -16,19 +17,28 @@ public class SoundtrackController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = siren;
-        StartCoroutine(PlaySiren());
 
     }
 
-     IEnumerator PlaySiren()
+    private void Update()
+    {
+        if (!PauseGameSingleton.Instance.isPaused && !soundtrackStarted)
+        {
+            soundtrackStarted = true;
+            StartCoroutine(PlaySiren());
+        }
+    }
+
+    IEnumerator PlaySiren()
     {
         var clipLength = audioSource.clip.length;
         audioSource.Play();
-        yield return new WaitForSeconds(clipLength - 2);
-        StartCoroutine(MyFadeOut());
-        yield return new WaitForSeconds(1);
-        StartCoroutine(MyFadeIn());
-        LoopSoundtrack();
+        yield return null;
+        //yield return new WaitForSeconds(clipLength - 2);
+        //StartCoroutine(MyFadeOut());
+        //yield return new WaitForSeconds(1);
+        //StartCoroutine(MyFadeIn());
+        //LoopSoundtrack();
     }
 
     private void LoopSoundtrack()
