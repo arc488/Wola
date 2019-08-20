@@ -28,12 +28,14 @@ public class Enemy : MonoBehaviour
     GameObject m_Target;
     ZombieSounds zs;
     AttackEvent attackEvent;
+    Collider collider;
 
     public bool isAttacking = false;
     public bool isChasing = false;
 
     void Start()
     {
+        collider = GetComponent<CapsuleCollider>();
         attackEvent = GetComponentInChildren<AttackEvent>();
         companion = FindObjectOfType<CompanionMovement>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -167,6 +169,15 @@ public class Enemy : MonoBehaviour
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "SpawnBlocker")
+        {
+            print("Physics ignored");
+            Physics.IgnoreCollision(collision.collider, collider);
+        }
     }
 
     public bool IsAttacking()
