@@ -22,6 +22,8 @@ public class DogSounds : MonoBehaviour
 
     void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
         timeSinceLastBark += Time.deltaTime;
 
 

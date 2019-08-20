@@ -20,6 +20,7 @@ public class GunInventory : MonoBehaviour {
 	[HideInInspector]
 	public float switchWeaponCooldown;
 
+    public bool gunsIconsDrawn = false;
 	/*
 	 * Calling the method that will update the icons of our guns if we carry any upon start.
 	 * Also will spawn a weapon upon start.
@@ -123,9 +124,11 @@ public class GunInventory : MonoBehaviour {
 	 * It will check if we carry a gun and destroy it, and its then going to load a gun prefab from our Resources Folder.
 	 */
 	IEnumerator Spawn(int _redniBroj){
-		if (weaponChanging)
-			weaponChanging.Play ();
-		else
+		if (weaponChanging && !PauseGameSingleton.Instance.isPaused)
+        {
+            weaponChanging.Play();
+        }
+        else
 			print ("Missing Weapon Changing music clip.");
 		if(currentGun){
 			if(currentGun.name.Contains("Gun")){
@@ -178,7 +181,7 @@ public class GunInventory : MonoBehaviour {
 	 * From here I am listing thourhg guns I have and drawing corresponding images on the sceen.
 	 */
 	void OnGUI(){
-
+        if (PauseGameSingleton.Instance.isPaused) return;
 		if(currentGun){
 			for(int i = 0; i < gunsIHave.Count; i++){
 				DrawCorrespondingImage(i);

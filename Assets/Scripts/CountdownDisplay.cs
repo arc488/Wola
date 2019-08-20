@@ -27,19 +27,24 @@ public class CountdownDisplay : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = countdownClip;
         countdownCanvas.enabled = false;
+        countdownDisplay.enabled = false;
+
     }
 
     void Update()
     {
+
         if (sm.isCountdownActive)
         {
             StartCoroutine(PlayCountDownClip());
             countdownCanvas.enabled = true;
+            countdownDisplay.enabled = true;
             countdownDisplay.text = (startCountdown - Mathf.RoundToInt(sm.levelCountdown)).ToString();
         }
         else
         {
             countdownDisplay.text = startCountdown.ToString();
+            countdownDisplay.enabled = false;
             countdownCanvas.enabled = false;
         }
 

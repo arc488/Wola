@@ -84,13 +84,15 @@ public class GunScript : MonoBehaviour {
 	*/
 	void Update(){
 
-		Animations();
+        //***** This script is paused in the Shooting() method;
+
+        Animations();
 
 		GiveCameraScriptMySensitvity();
 
 		PositionGun();
 
-		Shooting();
+        Shooting();
 		MeeleAttack();
 		LockCameraWhileMelee ();
 
@@ -107,7 +109,9 @@ public class GunScript : MonoBehaviour {
 	*Calculation of weapon position when aiming or not aiming.
 	*/
 	void FixedUpdate(){
-		RotationGun ();
+        //if (PauseGameSingleton.Instance.isPaused) return;
+
+        RotationGun();
 
 		MeeleAnimationsStates ();
 
@@ -158,7 +162,6 @@ public class GunScript : MonoBehaviour {
 	 * Used to expand position of the crosshair or make it dissapear when running
 	 */
 	void CrossHairExpansionWhenWalking(){
-
 		if(player.GetComponent<Rigidbody>().velocity.magnitude > 1 && Input.GetAxis("Fire1") == 0){//ifnot shooting
 
 			expandValues_crosshair += new Vector2(20, 40) * Time.deltaTime;
@@ -338,8 +341,9 @@ public class GunScript : MonoBehaviour {
 	 * Checking if the gun is automatic or nonautomatic and accordingly runs the ShootMethod();.
 	 */
 	void Shooting(){
+        if (PauseGameSingleton.Instance.isPaused) return;
 
-		if (!meeleAttack) {
+        if (!meeleAttack) {
 			if (currentStyle == GunStyles.nonautomatic) {
 				if (Input.GetButtonDown ("Fire1")) {
 					ShootMethod ();
@@ -527,7 +531,9 @@ public class GunScript : MonoBehaviour {
 		if(mls && HUD_bullets)
 			HUD_bullets.text = bulletsIHave.ToString() + " - " + bulletsInTheGun.ToString();
 
-		DrawCrosshair();
+        if (PauseGameSingleton.Instance.isPaused) return;
+
+        DrawCrosshair();
 	}
 
 	[Header("Crosshair properties")]

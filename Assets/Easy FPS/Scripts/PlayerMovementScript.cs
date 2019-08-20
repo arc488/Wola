@@ -31,7 +31,9 @@ public class PlayerMovementScript : MonoBehaviour {
 	* Raycasting for meele attacks and input movement handling here.
 	*/
 	void FixedUpdate(){
-		RaycastForMeleeAttacks ();
+        if (PauseGameSingleton.Instance.isPaused) return;
+
+        RaycastForMeleeAttacks();
 
 		PlayerMovementLogic ();
 	}
@@ -91,9 +93,10 @@ public class PlayerMovementScript : MonoBehaviour {
 	* Update loop calling other stuff
 	*/
 	void Update(){
-		
 
-		Jumping ();
+        if (PauseGameSingleton.Instance.isPaused) return;
+
+        Jumping();
 
 		Crouching();
 

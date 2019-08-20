@@ -44,6 +44,8 @@ public class CompanionMovement : MonoBehaviour
 
     void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
         distanceToPlayer = DistanceToTarget(player.transform.position);
         ControlAnimation();
 

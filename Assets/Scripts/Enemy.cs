@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
         if (GetComponent<Health>().IsDead()) return;
         m_Target = ChooseTarget();
         if (isAttacking) SlerpTowardTarget(m_Target.transform);

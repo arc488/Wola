@@ -41,6 +41,8 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
         if (headshotCount >= headshotsToDie && isDead == false)
         {
             isDead = true;
