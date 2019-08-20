@@ -16,6 +16,7 @@ TagManager:
   - LevelPart
   - Weapon
   - Headshot
+  - SpawnBlocker
   layers:
   - Default
   - TransparentFX
