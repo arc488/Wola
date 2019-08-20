@@ -46,7 +46,7 @@ public class Health : MonoBehaviour
             isDead = true;
             wasHeadshot = true;
             health = 0;
-            Destroy(head);
+            head.transform.localScale = Vector3.zero;
             audioSource.clip = headshotSound;
             audioSource.Play();
             Die();

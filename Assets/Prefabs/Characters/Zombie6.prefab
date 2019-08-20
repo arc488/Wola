@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie6
       objectReference: {fileID: 0}
+    - target: {fileID: 609375409, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 5960088894153351084}
     - target: {fileID: 78417606634373120, guid: 1a60fdfe346097440a603f61fdde7247,
         type: 3}
       propertyPath: m_Enabled
