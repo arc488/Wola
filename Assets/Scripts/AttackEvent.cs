@@ -7,7 +7,6 @@ public class AttackEvent : MonoBehaviour
     PlayerHealth player;
     Enemy enemy;
 
-    // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponentInParent<Enemy>();
@@ -16,7 +15,6 @@ public class AttackEvent : MonoBehaviour
 
     void HitEvent()
     {
-        print("Hit event");
         enemy.AttackEvent();
     }
 

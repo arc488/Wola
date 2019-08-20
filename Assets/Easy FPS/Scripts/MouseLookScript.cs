@@ -23,7 +23,7 @@ public class MouseLookScript : MonoBehaviour {
 
         MouseInputMovement();
 
-		if (Input.GetKeyDown (KeyCode.L)) {
+		if (Input.GetKeyDown (KeyCode.L) && !GetComponent<PlayerHealth>().IsDead()) {
 			Cursor.lockState = CursorLockMode.Locked;
 
 		}

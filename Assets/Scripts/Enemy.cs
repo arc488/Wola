@@ -78,10 +78,7 @@ public class Enemy : MonoBehaviour
     private void SetMovementSpeed()
     {
         float calculatedChaseSpeed = chaseSpeed * speedMultiplier;
-
         maxSpeed = Mathf.Max(calculatedChaseSpeed);
-
-
         navMeshAgent.speed = calculatedChaseSpeed;
         
     }

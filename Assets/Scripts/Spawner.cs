@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour
 
     public bool spawnTimer = true;
 
+    public CompanionFetch companionFetch;
+
     public SoundtrackController sc;
 
     public SpawnerManager sm;
@@ -23,6 +25,11 @@ public class Spawner : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(transform.position, 0.5f);
+    }
+
+    private void Awake()
+    {
+        companionFetch = FindObjectOfType<CompanionFetch>();
     }
 
     private void Start()
@@ -64,6 +71,8 @@ public class Spawner : MonoBehaviour
     IEnumerator AdvanceToNextLevel()
     {
         //sc.FadeOut();
+        companionFetch.ResetFetch();
+
         sm.currentLevel += 1;
         sm.enemiesKilledThisRound = 0;
         sm.numberOfLivingEnemies = 0;

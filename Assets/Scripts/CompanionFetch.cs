@@ -12,6 +12,7 @@ public class CompanionFetch : MonoBehaviour
     [SerializeField] float fetchNumber = 3f;
     [SerializeField] LayerMask ignoreLayer;
 
+    float remainingFetch;
     Vector3 rayOrigin;
     GameObject markerInstance = null;
     RaycastHit hit;
@@ -21,12 +22,13 @@ public class CompanionFetch : MonoBehaviour
 
     private void Awake()
     {
+        remainingFetch = fetchNumber;
         companion = FindObjectOfType<CompanionMovement>();
     }
 
     private void Update()
     {
-        if (fetchNumber <= 0) return;
+        if (remainingFetch <= 0) return;
 
         if (Input.GetButtonDown("CompanionFetch"))
         {
@@ -43,7 +45,7 @@ public class CompanionFetch : MonoBehaviour
             if (raycastingMarker)
             {
                 companion.Fetch(hit);
-                fetchNumber -= 1;
+                remainingFetch -= 1;
             }
             raycastingMarker = false;
             Destroy(markerInstance);
@@ -95,7 +97,12 @@ public class CompanionFetch : MonoBehaviour
 
     public float RemainingFetch()
     {
-        return fetchNumber;
+        return remainingFetch;
+    }
+
+    public void ResetFetch()
+    {
+        remainingFetch = fetchNumber;
     }
 
 
