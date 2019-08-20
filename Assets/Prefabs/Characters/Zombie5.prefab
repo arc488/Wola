@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie5
       objectReference: {fileID: 0}
+    - target: {fileID: 609375409, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 8695416186947673741}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
 --- !u!4 &8787221846467358784 stripped
@@ -235,6 +239,12 @@ PrefabInstance:
 --- !u!4 &8695416186947830509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400064, guid: f19fdde364de4dd49bfb9f56b60d74e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8695416186947704877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8695416186947673741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f19fdde364de4dd49bfb9f56b60d74e5,
     type: 3}
   m_PrefabInstance: {fileID: 8695416186947704877}
   m_PrefabAsset: {fileID: 0}
