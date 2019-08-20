@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float lowerSpeedLimit = 0.5f;
     [Range(0, 1)]
     [SerializeField] float upperSpeedLimit = 1f;
+    [SerializeField] float damage = 2f;
 
 
     NavMeshAgent navMeshAgent;
@@ -25,13 +26,15 @@ public class Enemy : MonoBehaviour
     float maxSpeed;
     CompanionMovement companion;
     GameObject m_Target;
-    ZombieSounds zs; 
+    ZombieSounds zs;
+    AttackEvent attackEvent;
 
     public bool isAttacking = false;
     public bool isChasing = false;
 
     void Start()
     {
+        attackEvent = GetComponentInChildren<AttackEvent>();
         companion = FindObjectOfType<CompanionMovement>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -158,6 +161,15 @@ public class Enemy : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void AttackEvent()
+    {
+        if (isAttacking)
+        {
+            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        }
+
     }
 
     public bool IsAttacking()

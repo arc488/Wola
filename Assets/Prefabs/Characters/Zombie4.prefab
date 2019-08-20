@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8763621168992150462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109602427975307267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbf1be757a31f947a19efb133b7a3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4105673762583953793
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +192,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f6e867e7d7db9e48abcb117233235b1, type: 3}
+--- !u!1 &109602427975307267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 9f6e867e7d7db9e48abcb117233235b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 109602427975276193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109602427975307269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: 9f6e867e7d7db9e48abcb117233235b1,
@@ -199,25 +217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6839626896576262020, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: m_Name
-      value: Zombie4
-      objectReference: {fileID: 0}
-    - target: {fileID: 609375409, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
-      propertyPath: head
-      value: 
-      objectReference: {fileID: 109602427975307269}
-    - target: {fileID: 15481262790164473, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.2393897
-      objectReference: {fileID: 0}
-    - target: {fileID: 15481262790164473, guid: 1a60fdfe346097440a603f61fdde7247,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.69771516
-      objectReference: {fileID: 0}
     - target: {fileID: 4020986455280522597, guid: 1a60fdfe346097440a603f61fdde7247,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -272,6 +271,25 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839626896576262020, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: m_Name
+      value: Zombie4
+      objectReference: {fileID: 0}
+    - target: {fileID: 609375409, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 109602427975307269}
+    - target: {fileID: 15481262790164473, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.2393897
+      objectReference: {fileID: 0}
+    - target: {fileID: 15481262790164473, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.69771516
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a60fdfe346097440a603f61fdde7247, type: 3}
