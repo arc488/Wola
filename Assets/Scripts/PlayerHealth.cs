@@ -9,19 +9,36 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float regenerateRate = 1f;
     [SerializeField] Image bloodEffect = null;
     [SerializeField] float currentHealth;
-    Color initialColor;
+
+    bool isDead = false;
+    Color currentColor;
     // Start is called before the first frame update
     void Start()
     {
-        initialColor = bloodEffect.color;
+        currentColor = bloodEffect.color;
         currentHealth = startHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        initialColor.a = (startHealth - currentHealth) / 100;
-        bloodEffect.color = initialColor;
+        if (currentHealth < startHealth)
+        {
+            currentHealth += regenerateRate;
+        } 
+        currentColor.a = (startHealth - currentHealth) / 100;
+        bloodEffect.color = currentColor;
+
+        if (currentHealth <= 1)
+        {
+            isDead = true;
+        }
+
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 
     public void TakeDamage(float damage)

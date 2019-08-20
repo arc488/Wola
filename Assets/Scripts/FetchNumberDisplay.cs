@@ -20,6 +20,8 @@ public class FetchNumberDisplay : MonoBehaviour
 
     private void OnGUI()
     {
+        if (PauseGameSingleton.Instance.isPaused) return;
+
         for (int i = 0; i < remainingFetchNumber; i++)
         {
             GUI.DrawTexture(new Rect(20 * (i * xIconSeparation) + 10, 20, 40, 40), icon);
