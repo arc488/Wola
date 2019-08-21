@@ -23,12 +23,13 @@ public class Health : MonoBehaviour
     NavMeshObstacle obstacle;
     AudioSource audioSource;
     ZombieSounds zombieSounds;
-
+    SphereCollider headshotCollider;
 
     private void Start()
     {
         if (this.tag == "Enemy")
         {
+
             audioSource = GetComponent<AudioSource>();
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();
@@ -36,6 +37,7 @@ public class Health : MonoBehaviour
             capsuleCollider = GetComponent<CapsuleCollider>();
             obstacle = GetComponent<NavMeshObstacle>();
             zombieSounds = GetComponent<ZombieSounds>();
+            headshotCollider = GetComponentInChildren<SphereCollider>();
         }
     }
 
@@ -78,6 +80,7 @@ public class Health : MonoBehaviour
         }
         if (!wasHeadshot) zombieSounds.PlayDeathSounds();
         capsuleCollider.enabled = false;
+        headshotCollider.enabled = false;
         obstacle.enabled = false;
         spawner.IncrementKilledThisRound();
         Destroy(gameObject, 5f);
