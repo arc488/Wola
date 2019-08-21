@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
+using System;
 
 public class FetchNumberDisplay : MonoBehaviour
 {
     [SerializeField] Texture icon;
-    [SerializeField] float xIconSeparation = 2.3f;
     [SerializeField] GameObject[] icons;
     CompanionFetch companionFetch = null;
     
@@ -20,10 +21,19 @@ public class FetchNumberDisplay : MonoBehaviour
         remainingFetchNumber = companionFetch.RemainingFetch();
         icons = GameObject.FindGameObjectsWithTag("FetchIcon");
 
+        Array.Sort(icons, XPositionComparison);
+
         foreach (var icon in icons)
         {
             icon.SetActive(false);
         }
+    }
+
+    private int XPositionComparison(GameObject a, GameObject b)
+    {
+        var xa = a.transform.position.x;
+        var xb = b.transform.position.x;
+        return xb.CompareTo(xa); 
     }
 
 
@@ -35,11 +45,6 @@ public class FetchNumberDisplay : MonoBehaviour
         {
             remainingFetchNumber = companionFetch.RemainingFetch();          
         }
-
-        //if (remainingFetchNumber > 0)
-        //{
-        //return;
-        //}
 
         foreach (GameObject icon in icons)
         {
