@@ -189,6 +189,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 15481262790164473, guid: 1a60fdfe346097440a603f61fdde7247,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379357896438083401, guid: 1a60fdfe346097440a603f61fdde7247,
         type: 3}
       propertyPath: m_Enabled
