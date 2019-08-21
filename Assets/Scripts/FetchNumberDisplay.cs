@@ -50,7 +50,6 @@ public class FetchNumberDisplay : MonoBehaviour
 
         for (int i = 0; i < remainingFetchNumber; i++)
         {
-            print(i);
             icons[i].SetActive(true);
         }
     }

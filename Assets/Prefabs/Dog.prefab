@@ -208,7 +208,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 000efa6905c86ef46ba0cd50e846ec89, type: 3}
   audioSource: {fileID: 0}
   minBarkwait: 1
-  maxBarkwait: 5
+  maxBarkwait: 3
 --- !u!1 &9111977784243491051
 GameObject:
   m_ObjectHideFlags: 0
