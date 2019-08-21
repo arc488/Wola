@@ -8,25 +8,24 @@ public class FetchNumberDisplay : MonoBehaviour
 {
     [SerializeField] Texture icon;
     [SerializeField] float xIconSeparation = 2.3f;
-
+    [SerializeField] GameObject[] icons;
     CompanionFetch companionFetch = null;
+    
 
-    float remainingFetchNumber = 0f;
+    public float remainingFetchNumber = 0f;
 
     private void Awake()
     {
         companionFetch = FindObjectOfType<CompanionFetch>();
-    }
+        remainingFetchNumber = companionFetch.RemainingFetch();
+        icons = GameObject.FindGameObjectsWithTag("FetchIcon");
 
-    private void OnGUI()
-    {
-        if (PauseGameSingleton.Instance.isPaused) return;
-
-        for (int i = 0; i < remainingFetchNumber; i++)
+        foreach (var icon in icons)
         {
-            GUI.DrawTexture(new Rect(20 * (i * xIconSeparation) + 10, 20, 40, 40), icon);
+            icon.SetActive(false);
         }
     }
+
 
     void Update()
     {
@@ -37,9 +36,22 @@ public class FetchNumberDisplay : MonoBehaviour
             remainingFetchNumber = companionFetch.RemainingFetch();          
         }
 
-        if (remainingFetchNumber > 0)
+        //if (remainingFetchNumber > 0)
+        //{
+        //return;
+        //}
+
+        foreach (GameObject icon in icons)
         {
-            return;
+            icon.SetActive(false);
+        }
+
+        if (remainingFetchNumber <= 0) return;
+
+        for (int i = 0; i < remainingFetchNumber; i++)
+        {
+            print(i);
+            icons[i].SetActive(true);
         }
     }
 }
