@@ -17,6 +17,7 @@ TagManager:
   - Weapon
   - Headshot
   - SpawnBlocker
+  - FetchIcon
   layers:
   - Default
   - TransparentFX
