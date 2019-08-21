@@ -164,7 +164,7 @@ public class Enemy : MonoBehaviour
 
     public void AttackEvent()
     {
-        if (isAttacking)
+        if (isAttacking && m_Target.tag == "Player")
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }

@@ -53,9 +53,10 @@ MonoBehaviour:
   - {fileID: 918623311864147318, guid: 03356ebd50559e64abe5eba266204820, type: 3}
   spawnFrequency: 2
   progression: {fileID: 11400000, guid: 5c7b0da3045832f48a2a3b95b6f5243b, type: 2}
-  enemyNumberMultiplier: 2
+  enemyNumberMultiplier: 5
   countdownLength: 10
   lastSpawn: {fileID: 0}
   spawnTimer: 1
+  companionFetch: {fileID: 0}
   sc: {fileID: 0}
   sm: {fileID: 0}

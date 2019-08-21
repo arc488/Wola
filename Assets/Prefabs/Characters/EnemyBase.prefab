@@ -94,6 +94,9 @@ MonoBehaviour:
   speedMultiplier: 2
   rotationSpeed: 1
   chaseOnSpawn: 1
+  lowerSpeedLimit: 0.5
+  upperSpeedLimit: 1
+  damage: 2
   isAttacking: 0
   isChasing: 0
 --- !u!114 &609375409
@@ -108,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3ba87f6fc879b40baf5ab5809424ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   headshotsToDie: 2
   headshotSound: {fileID: 8300000, guid: c1eb300aa53eb51499a9024e7cb904d9, type: 3}
   head: {fileID: 0}
@@ -257,6 +260,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  zombieAttackSounds: []
+  zombieDeathSounds: []
   audioSource: {fileID: 0}
   minWait: 1
   maxWait: 2
