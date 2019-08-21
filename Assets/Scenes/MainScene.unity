@@ -14057,25 +14057,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1917423652860419165, guid: 3607b297c91022649a837770b310db7c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1917423652860111397, guid: 3607b297c91022649a837770b310db7c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.77
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 1917423652860111397, guid: 3607b297c91022649a837770b310db7c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.46971
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1917423652860111397, guid: 3607b297c91022649a837770b310db7c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.54
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1917423652860111397, guid: 3607b297c91022649a837770b310db7c,
         type: 3}
@@ -14121,11 +14116,6 @@ PrefabInstance:
       propertyPath: companion
       value: 
       objectReference: {fileID: 1200006168}
-    - target: {fileID: 1917423652865652681, guid: 3607b297c91022649a837770b310db7c,
-        type: 3}
-      propertyPath: m_Mass
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 862531879, guid: 3607b297c91022649a837770b310db7c, type: 3}
       propertyPath: bloodEffect
       value: 
