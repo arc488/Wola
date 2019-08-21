@@ -33,7 +33,7 @@ public class FetchNumberDisplay : MonoBehaviour
     {
         var xa = a.transform.position.x;
         var xb = b.transform.position.x;
-        return xb.CompareTo(xa); 
+        return xa.CompareTo(xb); 
     }
 
 

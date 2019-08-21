@@ -13,6 +13,7 @@ public class CompanionMovement : MonoBehaviour
     [SerializeField] float rotationSpeed = 0.1f;
     [SerializeField] float fetchTolerance = 0.5f;
     [SerializeField] float fetchWaitTime = 3f;
+    [SerializeField] float maxTimeLimit = 15f;
 
     public float distanceToPlayer = 0f;
     NavMeshAgent navMeshAgent;
@@ -20,6 +21,7 @@ public class CompanionMovement : MonoBehaviour
     public bool isWaiting = false;
     Vector3 fetchPosition = Vector3.zero;
     Animator animatorController;
+    public float maxLimitTimer = 0f;
 
     //Player avoidance variables
     Vector3 avoidDirection;
@@ -46,6 +48,16 @@ public class CompanionMovement : MonoBehaviour
     {
         if (PauseGameSingleton.Instance.isPaused) return;
 
+        if (isFetching) maxLimitTimer += Time.deltaTime;
+
+        if (maxLimitTimer > maxTimeLimit)
+        {
+            fetchPosition = Vector3.zero;
+            isWaiting = false;
+            isFetching = false;
+            maxLimitTimer = 0f;
+        }
+
         distanceToPlayer = DistanceToTarget(player.transform.position);
         ControlAnimation();
 
@@ -57,6 +69,8 @@ public class CompanionMovement : MonoBehaviour
 
         if (isWaiting) LookAtNearestEnemy();
         if (isFetching) return;
+
+        maxLimitTimer = 0f;
 
         if (DistanceToTarget(avoidDestination) < 1.5f) isAvoding = false;
 

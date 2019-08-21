@@ -55,9 +55,11 @@ MonoBehaviour:
   rotationSpeed: 0.1
   fetchTolerance: 2
   fetchWaitTime: 3
+  maxTimeLimit: 15
   distanceToPlayer: 0
   isFetching: 0
   isWaiting: 0
+  maxLimitTimer: 0
   isAvoding: 0
 --- !u!195 &3557886291590980770
 NavMeshAgent:
