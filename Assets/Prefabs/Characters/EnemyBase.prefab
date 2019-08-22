@@ -96,7 +96,7 @@ MonoBehaviour:
   chaseOnSpawn: 1
   lowerSpeedLimit: 0.5
   upperSpeedLimit: 1
-  damage: 2
+  damage: 1
   isAttacking: 0
   isChasing: 0
 --- !u!114 &609375409
