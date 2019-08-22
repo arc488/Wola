@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DeathHandler : MonoBehaviour
 {
     [SerializeField] Canvas deathCanvas;
-
+    [SerializeField] TextMeshProUGUI display;
+    Score score;
     PlayerHealth player;
     bool deathSequenceInitialized = false;
     private void Awake()
     {
+        score = FindObjectOfType<Score>();
         deathCanvas.enabled = false;
     }
 
@@ -35,6 +38,7 @@ public class DeathHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         deathCanvas.enabled = true;
+        display.text = score.GetScore().ToString();
         Debug.LogAssertion(Cursor.visible);
         Debug.LogAssertion(Cursor.lockState);
         deathSequenceInitialized = true;
