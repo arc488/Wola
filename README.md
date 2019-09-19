@@ -1,6 +1,6 @@
 # Wola
 
-Wola is my first big project, it's a typical Zombie shooter game with the usual host of FPS features, plus a dog companion!
+Wola is my first big project, it's a typical Zombie shooter game with the usual host of FPS features, plus a dog companion, with a "Fetch" ability which will make the dog to indicated location and attract all the zombies to iteself.
 
 Here are some screenshots:
 
